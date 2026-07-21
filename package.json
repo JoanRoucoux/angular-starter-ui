@@ -1,28 +1,29 @@
 {
-  "name": "angular-starter-web",
+  "name": "angular-starter-ui",
   "version": "1.0.0",
-  "description": "Ready-to-use Angular starter with ESLint, Prettier, Tailwind CSS, Vitest, Playwright, Transloco, Orval and Sheriff.",
+  "description": "Ready-to-use Angular design system starter: a publishable component library with Storybook, ESLint, Prettier, Tailwind CSS, Vitest and Sheriff already wired up.",
   "keywords": [
     "angular",
+    "design-system",
+    "component-library",
     "starter",
     "template",
     "typescript",
+    "storybook",
     "tailwindcss",
     "eslint",
     "prettier",
     "vitest",
-    "playwright",
-    "transloco",
-    "orval",
+    "ng-packagr",
     "sheriff"
   ],
-  "homepage": "https://github.com/JoanRoucoux/angular-starter-web#readme",
+  "homepage": "https://github.com/JoanRoucoux/angular-starter-ui#readme",
   "bugs": {
-    "url": "https://github.com/JoanRoucoux/angular-starter-web/issues"
+    "url": "https://github.com/JoanRoucoux/angular-starter-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoanRoucoux/angular-starter-web.git"
+    "url": "git+https://github.com/JoanRoucoux/angular-starter-ui.git"
   },
   "license": "MIT",
   "author": {
@@ -31,19 +32,19 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "build-storybook": "storybook build",
     "test": "ng test",
     "test:coverage": "ng test --coverage",
-    "e2e": "playwright test",
-    "e2e:ui": "playwright test --ui",
+    "test-storybook": "test-storybook",
+    "test-storybook:ci": "concurrently -k -s first -n storybook,test \"http-server storybook-static --port 6006 --silent\" \"wait-on tcp:127.0.0.1:6006 && test-storybook --url http://127.0.0.1:6006\"",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "generate:api": "orval --config ./orval.config.ts",
-    "postinstall": "pnpm run generate:api",
     "prepare": "husky"
   },
   "private": true,
@@ -56,7 +57,7 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "*.{css,scss,json,md,yml,yaml}": [
+    "*.{css,scss,json,md,mdx,yml,yaml}": [
       "prettier --write"
     ]
   },
@@ -64,15 +65,13 @@
     "@angular/common": "^22.0.7",
     "@angular/compiler": "^22.0.7",
     "@angular/core": "^22.0.7",
-    "@angular/forms": "^22.0.7",
     "@angular/platform-browser": "^22.0.7",
-    "@angular/router": "^22.0.7",
-    "@jsverse/transloco": "^8.4.0",
-    "@jsverse/transloco-persist-lang": "^8.4.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^2.6.3",
+    "@angular/animations": "^22.0.7",
     "@angular/build": "^22.0.7",
     "@angular/cli": "^22.0.7",
     "@angular/compiler-cli": "^22.0.7",
@@ -82,6 +81,11 @@
     "@playwright/test": "^1.61.1",
     "@softarc/eslint-plugin-sheriff": "^0.19.6",
     "@softarc/sheriff-core": "^0.19.6",
+    "@storybook/addon-a11y": "^10.5.2",
+    "@storybook/addon-docs": "^10.5.2",
+    "@storybook/addon-themes": "^10.5.2",
+    "@storybook/angular-vite": "^10.5.2",
+    "@storybook/test-runner": "^0.24.4",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/angular": "^19.4.1",
     "@testing-library/dom": "^10.4.1",
@@ -90,19 +94,25 @@
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@vitest/coverage-v8": "^4.1.10",
     "angular-eslint": "22.1.0",
+    "concurrently": "^10.0.3",
     "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-storybook": "^10.5.2",
+    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^17.1.0",
-    "orval": "^8.22.0",
+    "ng-packagr": "^22.0.1",
     "postcss": "^8.5.19",
     "prettier": "^3.9.5",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "storybook": "^10.5.2",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "typescript-eslint": "8.64.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10",
+    "wait-on": "^9.0.10"
   }
 }
