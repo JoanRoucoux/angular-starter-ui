@@ -3,13 +3,13 @@ import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { type ButtonSize, type ButtonVariant, UiButton } from './button';
 
-interface ButtonArgs {
+type ButtonArgs = {
   variant: ButtonVariant;
   size: ButtonSize;
   disabled: boolean;
   label: string;
   onClick: () => void;
-}
+};
 
 const meta: Meta<ButtonArgs> = {
   title: 'Components/Button',

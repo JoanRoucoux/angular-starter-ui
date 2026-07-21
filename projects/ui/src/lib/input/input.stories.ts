@@ -3,11 +3,11 @@ import { expect, userEvent, within } from 'storybook/test';
 
 import { UiInput } from './input';
 
-interface InputArgs {
+type InputArgs = {
   type: string;
   placeholder: string;
   disabled: boolean;
-}
+};
 
 const meta: Meta<InputArgs> = {
   title: 'Components/Input',

@@ -3,10 +3,10 @@ import { expect, within } from 'storybook/test';
 
 import { type BadgeVariant, UiBadge } from './badge';
 
-interface BadgeArgs {
+type BadgeArgs = {
   variant: BadgeVariant;
   label: string;
-}
+};
 
 const meta: Meta<BadgeArgs> = {
   title: 'Components/Badge',
