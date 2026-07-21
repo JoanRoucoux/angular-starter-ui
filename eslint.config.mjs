@@ -3,11 +3,12 @@ import eslint from '@eslint/js';
 import sheriff from '@softarc/eslint-plugin-sheriff';
 import angular from 'angular-eslint';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import storybook from 'eslint-plugin-storybook';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', '.angular', 'src/app/core/api']),
+  globalIgnores(['dist', 'coverage', '.angular', 'storybook-static']),
   {
     files: ['**/*.ts'],
     extends: [
@@ -24,15 +25,15 @@ export default defineConfig([
         'error',
         {
           type: 'attribute',
-          prefix: 'app',
+          prefix: 'ui',
           style: 'camelCase',
         },
       ],
       '@angular-eslint/component-selector': [
         'error',
         {
-          type: 'element',
-          prefix: 'app',
+          type: ['element', 'attribute'],
+          prefix: 'ui',
           style: 'kebab-case',
         },
       ],
@@ -52,16 +53,9 @@ export default defineConfig([
     },
   },
   {
-    // Module boundaries (core/features/shared) defined in sheriff.config.ts.
+    // Module boundaries (component isolation) defined in sheriff.config.ts.
     files: ['**/*.ts'],
     extends: [sheriff.configs.all],
-  },
-  {
-    // Only the centralized logger and the bootstrap entry point (no DI available yet) may call the console directly.
-    files: ['src/app/core/logger/logger.ts', 'src/main.ts'],
-    rules: {
-      'no-console': 'off',
-    },
   },
   {
     files: ['**/*.html'],
@@ -71,4 +65,5 @@ export default defineConfig([
       '@angular-eslint/template/eqeqeq': 'error',
     },
   },
+  ...storybook.configs['flat/recommended'],
 ]);
