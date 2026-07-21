@@ -61,37 +61,20 @@ importers:
         specifier: ^0.19.6
         version: 0.19.6(typescript@6.0.3)
       '@storybook/addon-a11y':
-<<<<<<< HEAD
-        specifier: ^10.5.2
-        version: 10.5.2(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
-      '@storybook/addon-docs':
-        specifier: ^10.5.2
-        version: 10.5.2(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
-      '@storybook/addon-themes':
-        specifier: ^10.5.2
-        version: 10.5.2(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
-      '@storybook/angular-vite':
-        specifier: ^10.5.2
-        version: 10.5.2(3198b2b7949609d3bc386b44d15a660f)
-      '@storybook/test-runner':
-        specifier: ^0.24.4
-        version: 0.24.4(@types/node@26.1.1)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
-=======
         specifier: ^10.5.3
-        version: 10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))
+        version: 10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
       '@storybook/addon-docs':
         specifier: ^10.5.3
-        version: 10.5.3(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
+        version: 10.5.3(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
       '@storybook/addon-themes':
         specifier: ^10.5.3
-        version: 10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))
+        version: 10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
       '@storybook/angular-vite':
         specifier: ^10.5.3
-        version: 10.5.3(089a01f802151d82f472870c8e5cfd85)
+        version: 10.5.3(7afc1a9f4b16ad10b96a6e9c8429eafd)
       '@storybook/test-runner':
         specifier: ^0.24.4
-        version: 0.24.4(@types/node@26.1.1)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+        version: 0.24.4(@types/node@26.1.1)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
       '@tailwindcss/postcss':
         specifier: ^4.3.3
         version: 4.3.3
@@ -129,13 +112,8 @@ importers:
         specifier: ^5.5.6
         version: 5.5.6(eslint-config-prettier@10.1.8(eslint@10.7.0(jiti@2.7.0)))(eslint@10.7.0(jiti@2.7.0))(prettier@3.9.6)
       eslint-plugin-storybook:
-<<<<<<< HEAD
-        specifier: ^10.5.2
-        version: 10.5.2(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(typescript@6.0.3)
-=======
         specifier: ^10.5.3
-        version: 10.5.3(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(typescript@6.0.3)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+        version: 10.5.3(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(typescript@6.0.3)
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -161,13 +139,8 @@ importers:
         specifier: ^0.8.1
         version: 0.8.1(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.9.6))(prettier@3.9.6)
       storybook:
-<<<<<<< HEAD
-        specifier: ^10.5.2
-        version: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
         specifier: ^10.5.3
-        version: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+        version: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -3091,31 +3064,15 @@ packages:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
 
-  '@typescript-eslint/project-service@8.64.0':
-    resolution: {integrity: sha512-tk4WpOJ6IEbGrVHaNmM0YRrwAD3exZlIK3iadQNAxh4YKk6jvUQ4ecq18n+v7+meh+cJ3j+D8nbk8sRKhlwLQg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.1.0'
-
   '@typescript-eslint/project-service@8.65.0':
     resolution: {integrity: sha512-SxnPhbTsGahizDgbu7oqFH/xVtzIqMd/s+WtnSxNxJZJpLbdT5IPdzg8EZxO3+PoKahXmwJLeNQOpKJb3/bi7Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <6.1.0'
 
-  '@typescript-eslint/scope-manager@8.64.0':
-    resolution: {integrity: sha512-CXEaFdYXjSTgKhisNkwCcJwTP8Pl+fmRrEQrri4nm3vU743bALrxzLmq7fHG/7e6a5xO0lDYeURpZmBuhHk54w==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@typescript-eslint/scope-manager@8.65.0':
     resolution: {integrity: sha512-Esbl8OSYiVxBokYgWPf7VVWg/BE798wXhimnn9ML9Pt5qoDf8bfQlgjlKXR/k98+AcNzlLKYrpCcrcuZ9DZLgg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/tsconfig-utils@8.64.0':
-    resolution: {integrity: sha512-2yo8rRNKuzbVWQp5kslhANqZ2uDAeROQHBRZNPu8JDsHmeFNj/XJJhX/FhNUWmkHHvoNsKa6+tHJiig87EzsQw==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.1.0'
 
   '@typescript-eslint/tsconfig-utils@8.65.0':
     resolution: {integrity: sha512-j6GzGqCiRdA7Qhur2VVmKZAkBLfnHFQfx4TaJGL9RMveZqCo48jSHHO0DTgizEnGhtWnqmbtCUSrqSkdiY/0Hg==}
@@ -3130,31 +3087,14 @@ packages:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
 
-  '@typescript-eslint/types@8.64.0':
-    resolution: {integrity: sha512-qjhfuTfLXjA4IOzXvz0rTjT01BqEiIgPoUeMwiEjnaHKJMTNo8rH5pYW1a2L/0Dnux2fPC85AeyJoWaGa8WxTA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@typescript-eslint/types@8.65.0':
     resolution: {integrity: sha512-JSSwWNy+H0E/01jJEM+hrX6N0OFDzFzeIhHFSAS01tlVaevpG8cFyYRPhS5yjGOvBUx3sqQHVMjCL1CAZZMxBg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/typescript-estree@8.64.0':
-    resolution: {integrity: sha512-Pztpsn1aCE1oWDvDEfUk31nngvvF7vUB5SwHFEaZIFpvw7WJtqUHHL4plBZDA9HfWJJjL13BdG0YrJInTUvoVA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.1.0'
 
   '@typescript-eslint/typescript-estree@8.65.0':
     resolution: {integrity: sha512-JboAE2swaYt4tb1fHhHTABE2K+OLy09XfcTbhnk4Pw96f9dd2e9iYsJ28gBggHlo5z5x1rkyWvcPoTuNTd4oGg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      typescript: '>=4.8.4 <6.1.0'
-
-  '@typescript-eslint/utils@8.64.0':
-    resolution: {integrity: sha512-aJUGVB3+U0htrrCjoA8qukw8cm8fNCGAxK/tVoS70k8aeb7DETKeFozRiVFIwEeN9WJLsjaP3ph8I60tY2XZoQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
 
   '@typescript-eslint/utils@8.65.0':
@@ -3163,10 +3103,6 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
-
-  '@typescript-eslint/visitor-keys@8.64.0':
-    resolution: {integrity: sha512-mrtuL8Nsn6gi2H4mo5KMTp823M+3Q19Ew/i+Zlikq20tIMm99C3Ez0dCmkWWnxut20esQvTg8aUSEhMcAOXhEw==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/visitor-keys@8.65.0':
     resolution: {integrity: sha512-8C71BQkGjiMmXtop7pHVJu1l2NNShFdkCyD6a2ezzs5vU/L3LRtb69EtcteFwz0mYMPzIgOw0n6OV4VBUWZd7A==}
@@ -5726,10 +5662,6 @@ packages:
     peerDependencies:
       postcss: ^8.4.31
 
-  postcss@8.5.20:
-    resolution: {integrity: sha512-lW616l85ucIQL+FocMmL7pQFPqBmwejrCMg+iPxyImlrANNJG9NHq/RkyCZopDhd8C3LA03PHRJDjkbGu8vvug==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.5.21:
     resolution: {integrity: sha512-v4sDNP3fdNiWMfabO7OwOQdOX8TiQSztKyT1Wj0w+j7LDallJThJRBBBmzVGyYj0crMh7jlV4zepPkiNu9UwDQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -6936,33 +6868,33 @@ snapshots:
 
   '@angular-eslint/bundled-angular-compiler@22.1.0': {}
 
-  '@angular-eslint/eslint-plugin-template@22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.64.0)(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
+  '@angular-eslint/eslint-plugin-template@22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.65.0)(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@angular-eslint/bundled-angular-compiler': 22.1.0
       '@angular-eslint/template-parser': 22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@angular-eslint/utils': 22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/utils': 8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/utils': 22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/types': 8.65.0
+      '@typescript-eslint/utils': 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       aria-query: 5.3.2
       axobject-query: 4.1.0
       eslint: 10.7.0(jiti@2.7.0)
       typescript: 6.0.3
 
-  '@angular-eslint/eslint-plugin@22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
+  '@angular-eslint/eslint-plugin@22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@angular-eslint/bundled-angular-compiler': 22.1.0
-      '@angular-eslint/utils': 22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@typescript-eslint/utils': 8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/utils': 22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       eslint: 10.7.0(jiti@2.7.0)
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
 
-  '@angular-eslint/schematics@22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@angular/cli@22.0.7(@types/node@26.1.1)(chokidar@5.0.0))(@typescript-eslint/types@8.64.0)(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(chokidar@5.0.0)(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
+  '@angular-eslint/schematics@22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@angular/cli@22.0.7(@types/node@26.1.1)(chokidar@5.0.0))(@typescript-eslint/types@8.65.0)(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(chokidar@5.0.0)(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@angular-devkit/core': 22.0.7(chokidar@5.0.0)
       '@angular-devkit/schematics': 22.0.7(chokidar@5.0.0)
-      '@angular-eslint/eslint-plugin': 22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@angular-eslint/eslint-plugin-template': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.64.0)(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/eslint-plugin': 22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/eslint-plugin-template': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.65.0)(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       '@angular/cli': 22.0.7(@types/node@26.1.1)(chokidar@5.0.0)
       ignore: 7.0.5
       semver: 7.8.5
@@ -6982,10 +6914,10 @@ snapshots:
       eslint-scope: 9.1.2
       typescript: 6.0.3
 
-  '@angular-eslint/utils@22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
+  '@angular-eslint/utils@22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@angular-eslint/bundled-angular-compiler': 22.1.0
-      '@typescript-eslint/utils': 8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       eslint: 10.7.0(jiti@2.7.0)
       typescript: 6.0.3
 
@@ -8937,39 +8869,21 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-<<<<<<< HEAD
-  '@storybook/addon-a11y@10.5.2(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
+  '@storybook/addon-a11y@10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
     dependencies:
       '@storybook/global': 5.0.0
       axe-core: 4.12.1
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
 
-  '@storybook/addon-docs@10.5.2(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
+  '@storybook/addon-docs@10.5.3(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
-      '@storybook/csf-plugin': 10.5.2(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
+      '@storybook/csf-plugin': 10.5.3(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
       '@storybook/icons': 2.1.0(react@19.2.7)
-      '@storybook/react-dom-shim': 10.5.2(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
+      '@storybook/react-dom-shim': 10.5.3(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-  '@storybook/addon-a11y@10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))':
-    dependencies:
-      '@storybook/global': 5.0.0
-      axe-core: 4.12.1
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
-
-  '@storybook/addon-docs@10.5.3(@types/react@19.2.17)(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
-    dependencies:
-      '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
-      '@storybook/csf-plugin': 10.5.3(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
-      '@storybook/icons': 2.1.0(react@19.2.7)
-      '@storybook/react-dom-shim': 10.5.3(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))
-      react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       ts-dedent: 2.3.0
     optionalDependencies:
       '@types/react': 19.2.17
@@ -8980,21 +8894,12 @@ snapshots:
       - vite
       - webpack
 
-<<<<<<< HEAD
-  '@storybook/addon-themes@10.5.2(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
+  '@storybook/addon-themes@10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
     dependencies:
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       ts-dedent: 2.3.0
 
-  '@storybook/angular-vite@10.5.2(3198b2b7949609d3bc386b44d15a660f)':
-=======
-  '@storybook/addon-themes@10.5.3(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))':
-    dependencies:
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
-      ts-dedent: 2.3.0
-
-  '@storybook/angular-vite@10.5.3(089a01f802151d82f472870c8e5cfd85)':
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+  '@storybook/angular-vite@10.5.3(7afc1a9f4b16ad10b96a6e9c8429eafd)':
     dependencies:
       '@analogjs/vite-plugin-angular': 2.6.3(@angular/build@22.0.7(@angular/compiler-cli@22.0.7(@angular/compiler@22.0.7)(typescript@6.0.3))(@angular/compiler@22.0.7)(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(@angular/platform-browser@22.0.7(@angular/animations@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@types/node@26.1.1)(chokidar@5.0.0)(istanbul-lib-instrument@6.0.3)(jiti@2.7.0)(less@4.7.0)(lightningcss@1.33.0)(ng-packagr@22.0.1(@angular/compiler-cli@22.0.7(@angular/compiler@22.0.7)(typescript@6.0.3))(tailwindcss@4.3.3)(tslib@2.8.1)(typescript@6.0.3))(postcss@8.5.21)(tailwindcss@4.3.3)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10)(yaml@2.9.0))(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
       '@angular-devkit/architect': 0.2200.7(chokidar@5.0.0)
@@ -9006,17 +8911,10 @@ snapshots:
       '@angular/compiler-cli': 22.0.7(@angular/compiler@22.0.7)(typescript@6.0.3)
       '@angular/core': 22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)
       '@angular/platform-browser': 22.0.7(@angular/animations@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))
-<<<<<<< HEAD
-      '@storybook/builder-vite': 10.5.2(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
+      '@storybook/builder-vite': 10.5.3(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
       '@storybook/global': 5.0.0
       rxjs: 7.8.2
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-      '@storybook/builder-vite': 10.5.3(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
-      '@storybook/global': 5.0.0
-      rxjs: 7.8.2
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       telejson: 8.0.0
       ts-dedent: 2.3.0
       typescript: 6.0.3
@@ -9028,17 +8926,10 @@ snapshots:
       - rollup
       - webpack
 
-<<<<<<< HEAD
-  '@storybook/builder-vite@10.5.2(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
+  '@storybook/builder-vite@10.5.3(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
     dependencies:
-      '@storybook/csf-plugin': 10.5.2(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-  '@storybook/builder-vite@10.5.3(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
-    dependencies:
-      '@storybook/csf-plugin': 10.5.3(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      '@storybook/csf-plugin': 10.5.3(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       ts-dedent: 2.3.0
       vite: 8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0)
     transitivePeerDependencies:
@@ -9046,15 +8937,9 @@ snapshots:
       - rollup
       - webpack
 
-<<<<<<< HEAD
-  '@storybook/csf-plugin@10.5.2(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
+  '@storybook/csf-plugin@10.5.3(esbuild@0.28.1)(rollup@4.62.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
     dependencies:
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-  '@storybook/csf-plugin@10.5.3(esbuild@0.28.1)(rollup@4.60.2)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.7.0)(sass@1.99.0)(yaml@2.9.0))':
-    dependencies:
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       unplugin: 2.3.11
     optionalDependencies:
       esbuild: 0.28.1
@@ -9067,27 +8952,15 @@ snapshots:
     dependencies:
       react: 19.2.7
 
-<<<<<<< HEAD
-  '@storybook/react-dom-shim@10.5.2(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
+  '@storybook/react-dom-shim@10.5.3(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
     dependencies:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@storybook/test-runner@0.24.4(@types/node@26.1.1)(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
-=======
-  '@storybook/react-dom-shim@10.5.3(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))':
-    dependencies:
-      react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
-    optionalDependencies:
-      '@types/react': 19.2.17
-
-  '@storybook/test-runner@0.24.4(@types/node@26.1.1)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))':
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+  '@storybook/test-runner@0.24.4(@types/node@26.1.1)(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/generator': 7.29.7
@@ -9109,11 +8982,7 @@ snapshots:
       playwright: 1.61.1
       playwright-core: 1.61.1
       rimraf: 3.0.2
-<<<<<<< HEAD
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
       uuid: 8.3.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -9258,7 +9127,7 @@ snapshots:
       '@alloc/quick-lru': 5.2.0
       '@tailwindcss/node': 4.3.3
       '@tailwindcss/oxide': 4.3.3
-      postcss: 8.5.20
+      postcss: 8.5.21
       tailwindcss: 4.3.3
 
   '@testing-library/angular@19.4.1(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(@angular/platform-browser@22.0.7(@angular/animations@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@angular/router@22.0.7(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(@angular/platform-browser@22.0.7(@angular/animations@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(@angular/common@22.0.7(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.7(@angular/compiler@22.0.7)(rxjs@7.8.2)))(rxjs@7.8.2))(@testing-library/dom@10.4.1)':
@@ -9435,15 +9304,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/project-service@8.64.0(typescript@6.0.3)':
-    dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.64.0(typescript@6.0.3)
-      '@typescript-eslint/types': 8.64.0
-      debug: 4.4.3
-      typescript: 6.0.3
-    transitivePeerDependencies:
-      - supports-color
-
   '@typescript-eslint/project-service@8.65.0(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.65.0(typescript@6.0.3)
@@ -9453,19 +9313,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@8.64.0':
-    dependencies:
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/visitor-keys': 8.64.0
-
   '@typescript-eslint/scope-manager@8.65.0':
     dependencies:
       '@typescript-eslint/types': 8.65.0
       '@typescript-eslint/visitor-keys': 8.65.0
-
-  '@typescript-eslint/tsconfig-utils@8.64.0(typescript@6.0.3)':
-    dependencies:
-      typescript: 6.0.3
 
   '@typescript-eslint/tsconfig-utils@8.65.0(typescript@6.0.3)':
     dependencies:
@@ -9483,24 +9334,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/types@8.64.0': {}
-
   '@typescript-eslint/types@8.65.0': {}
-
-  '@typescript-eslint/typescript-estree@8.64.0(typescript@6.0.3)':
-    dependencies:
-      '@typescript-eslint/project-service': 8.64.0(typescript@6.0.3)
-      '@typescript-eslint/tsconfig-utils': 8.64.0(typescript@6.0.3)
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/visitor-keys': 8.64.0
-      debug: 4.4.3
-      minimatch: 10.2.5
-      semver: 7.8.5
-      tinyglobby: 0.2.17
-      ts-api-utils: 2.5.0(typescript@6.0.3)
-      typescript: 6.0.3
-    transitivePeerDependencies:
-      - supports-color
 
   '@typescript-eslint/typescript-estree@8.65.0(typescript@6.0.3)':
     dependencies:
@@ -9517,17 +9351,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.7.0(jiti@2.7.0))
-      '@typescript-eslint/scope-manager': 8.64.0
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/typescript-estree': 8.64.0(typescript@6.0.3)
-      eslint: 10.7.0(jiti@2.7.0)
-      typescript: 6.0.3
-    transitivePeerDependencies:
-      - supports-color
-
   '@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@10.7.0(jiti@2.7.0))
@@ -9538,11 +9361,6 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
-
-  '@typescript-eslint/visitor-keys@8.64.0':
-    dependencies:
-      '@typescript-eslint/types': 8.64.0
-      eslint-visitor-keys: 5.0.1
 
   '@typescript-eslint/visitor-keys@8.65.0':
     dependencies:
@@ -9774,13 +9592,13 @@ snapshots:
       '@angular-devkit/core': 22.0.7(chokidar@5.0.0)
       '@angular-devkit/schematics': 22.0.7(chokidar@5.0.0)
       '@angular-eslint/builder': 22.1.0(@angular/cli@22.0.7(@types/node@26.1.1)(chokidar@5.0.0))(chokidar@5.0.0)(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@angular-eslint/eslint-plugin': 22.1.0(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@angular-eslint/eslint-plugin-template': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.64.0)(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
-      '@angular-eslint/schematics': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@angular/cli@22.0.7(@types/node@26.1.1)(chokidar@5.0.0))(@typescript-eslint/types@8.64.0)(@typescript-eslint/utils@8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(chokidar@5.0.0)(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/eslint-plugin': 22.1.0(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/eslint-plugin-template': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@typescript-eslint/types@8.65.0)(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@angular-eslint/schematics': 22.1.0(@angular-eslint/template-parser@22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(@angular/cli@22.0.7(@types/node@26.1.1)(chokidar@5.0.0))(@typescript-eslint/types@8.65.0)(@typescript-eslint/utils@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(chokidar@5.0.0)(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       '@angular-eslint/template-parser': 22.1.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       '@angular/cli': 22.0.7(@types/node@26.1.1)(chokidar@5.0.0)
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/utils': 8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/types': 8.65.0
+      '@typescript-eslint/utils': 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       eslint: 10.7.0(jiti@2.7.0)
       typescript: 6.0.3
       typescript-eslint: 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
@@ -9937,9 +9755,9 @@ snapshots:
       domhandler: 5.0.3
       htmlparser2: 10.1.0
       picocolors: 1.1.1
-      postcss: 8.5.20
+      postcss: 8.5.21
       postcss-media-query-parser: 0.2.3
-      postcss-safe-parser: 7.0.1(postcss@8.5.20)
+      postcss-safe-parser: 7.0.1(postcss@8.5.21)
 
   bidi-js@1.0.3:
     dependencies:
@@ -10491,20 +10309,12 @@ snapshots:
     optionalDependencies:
       eslint-config-prettier: 10.1.8(eslint@10.7.0(jiti@2.7.0))
 
-<<<<<<< HEAD
-  eslint-plugin-storybook@10.5.2(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(typescript@6.0.3):
-=======
-  eslint-plugin-storybook@10.5.3(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7))(typescript@6.0.3):
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+  eslint-plugin-storybook@10.5.3(eslint@10.7.0(jiti@2.7.0))(storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7))(typescript@6.0.3):
     dependencies:
-      '@typescript-eslint/types': 8.64.0
-      '@typescript-eslint/utils': 8.64.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/types': 8.65.0
+      '@typescript-eslint/utils': 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       eslint: 10.7.0(jiti@2.7.0)
-<<<<<<< HEAD
-      storybook: 10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
-=======
-      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7)
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+      storybook: 10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -12048,7 +11858,7 @@ snapshots:
       less: 4.7.0
       ora: 9.4.1
       piscina: 5.3.0
-      postcss: 8.5.20
+      postcss: 8.5.21
       rollup-plugin-dts: 6.4.1(rollup@4.62.2)(typescript@6.0.3)
       rxjs: 7.8.2
       sass: 1.101.0
@@ -12113,7 +11923,7 @@ snapshots:
     dependencies:
       hosted-git-info: 9.0.3
       proc-log: 6.1.0
-      semver: 7.8.5
+      semver: 7.7.4
       validate-npm-package-name: 7.0.2
 
   npm-packlist@10.0.4:
@@ -12484,15 +12294,9 @@ snapshots:
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-safe-parser@7.0.1(postcss@8.5.20):
+  postcss-safe-parser@7.0.1(postcss@8.5.21):
     dependencies:
-      postcss: 8.5.20
-
-  postcss@8.5.20:
-    dependencies:
-      nanoid: 3.3.16
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
+      postcss: 8.5.21
 
   postcss@8.5.21:
     dependencies:
@@ -12980,11 +12784,7 @@ snapshots:
 
   stdin-discarder@0.3.2: {}
 
-<<<<<<< HEAD
-  storybook@10.5.2(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7):
-=======
-  storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.5)(react@19.2.7):
->>>>>>> 06f11ae (chore(deps-dev): Bump the storybook group with 6 updates)
+  storybook@10.5.3(@types/react@19.2.17)(prettier@3.9.6)(react@19.2.7):
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/icons': 2.1.0(react@19.2.7)
@@ -13295,7 +13095,7 @@ snapshots:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-      postcss: 8.5.20
+      postcss: 8.5.21
       rollup: 4.60.2
       tinyglobby: 0.2.16
     optionalDependencies:
@@ -13311,7 +13111,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
-      postcss: 8.5.20
+      postcss: 8.5.21
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
