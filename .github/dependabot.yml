@@ -9,11 +9,19 @@ updates:
         patterns:
           - '@angular/*'
           - 'angular-eslint'
+      storybook:
+        patterns:
+          - 'storybook'
+          - '@storybook/*'
+          - 'eslint-plugin-storybook'
       dev-dependencies:
         dependency-type: development
         exclude-patterns:
           - '@angular/*'
           - 'angular-eslint'
+          - 'storybook'
+          - '@storybook/*'
+          - 'eslint-plugin-storybook'
 
   - package-ecosystem: github-actions
     directory: /
