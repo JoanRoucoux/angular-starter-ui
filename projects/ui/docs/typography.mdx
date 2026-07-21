@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+The library does not ship fonts: it relies on the host's system font stack, applied on `body` by the consuming
+application (Storybook does the same in `.storybook/preview.css`):
+
+```css
+font-family:
+  ui-sans-serif,
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  sans-serif;
+```
+
+## Sizes
+
+Components use the default Tailwind type scale:
+
+| Usage                           | Class       | Sample                                               |
+| ------------------------------- | ----------- | ---------------------------------------------------- |
+| Badges, small buttons (`sm`)    | `text-xs`   | <span style={{ fontSize: '0.75rem' }}>Sample</span>  |
+| Buttons (`md`), inputs          | `text-sm`   | <span style={{ fontSize: '0.875rem' }}>Sample</span> |
+| Large buttons (`lg`), body text | `text-base` | <span style={{ fontSize: '1rem' }}>Sample</span>     |
+
+## Radius
+
+Two radii are used across the system: `rounded-md` (buttons, inputs, cards) and `rounded-full` (badges, avatars).
