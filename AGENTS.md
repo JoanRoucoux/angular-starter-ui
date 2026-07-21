@@ -57,6 +57,18 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - Cover every variant/size branch of the class-record maps — that is what keeps coverage at 100%.
 - Coverage is at 100% and must stay there; the CI thresholds (85/80/70/85) are intentionally lower so downstream users of the starter are not blocked — do not raise them. `*.stories.ts` files are excluded from coverage (`coverageExclude` in angular.json).
 
+## Generator
+
+New design systems are scaffolded from this starter by [starter-generator](https://github.com/JoanRoucoux/starter-generator), a generic engine: everything starter-specific lives **here**, in [generator.config.json](generator.config.json) (files removed from generated projects, package renames, install commands — full spec in the generator's README) and `.generator/templates/` (currently only the generated README, rendered with `{{token}}` placeholders).
+
+Keep them in sync with the starter:
+
+- The demo components (`badge`, `button`, `input`) are **kept** in generated projects as reference implementations — do not add them to the manifest's `remove`.
+- The manifest patches both [package.json](package.json) and [projects/ui/package.json](projects/ui/package.json) (the published name); if the library layout moves, update the manifest paths.
+- Template-only content (community files, release tooling) must be listed in the manifest's `remove`.
+- `.generator/templates/` stays excluded in [.prettierignore](.prettierignore) and the ESLint `globalIgnores`.
+- The `generate` job in [ci.yml](.github/workflows/ci.yml) generates a project from the working tree and runs its quality gates — it fails when the manifest or templates drift.
+
 ## Gotchas
 
 - `typescript` is pinned to `~6.0.2`: TypeScript 7 breaks `typescript-eslint` (via `ts-api-utils`). Do not bump until typescript-eslint supports TS 7. (This is also why the Storybook framework is `@storybook/angular-vite` — the webpack `@storybook/angular` peer range only allows TS ≤5.)

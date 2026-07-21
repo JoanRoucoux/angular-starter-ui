@@ -5,6 +5,9 @@
 /storybook-static
 node_modules
 
+# Generator templates contain {{tokens}} and are not valid syntax
+/.generator/templates
+
 # Lockfile
 pnpm-lock.yaml
 

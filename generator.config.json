@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "starter": "angular-starter-ui",
+  "nameSuffix": "-ui",
+  "prompts": [],
+  "copyIgnore": [
+    ".git",
+    "node_modules",
+    "dist",
+    "coverage",
+    ".angular",
+    "storybook-static",
+    ".claude/settings.local.json",
+    "pnpm-debug.log"
+  ],
+  "remove": [
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "LICENSE",
+    ".github/assets",
+    ".github/ISSUE_TEMPLATE",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/workflows/release-please.yml"
+  ],
+  "jsonPatch": [
+    {
+      "file": "package.json",
+      "set": {
+        "name": "{{projectName}}",
+        "version": "0.1.0",
+        "description": "{{title}} — Angular design system generated from angular-starter-ui."
+      },
+      "delete": ["keywords", "homepage", "bugs", "repository", "license", "author"]
+    },
+    {
+      "file": "projects/ui/package.json",
+      "set": {
+        "name": "{{projectName}}",
+        "version": "0.1.0"
+      }
+    }
+  ],
+  "install": "pnpm install",
+  "postInstall": ["pnpm run format"],
+  "nextSteps": ["pnpm start"]
+}
