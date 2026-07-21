@@ -11,16 +11,16 @@ pnpm start      # Storybook on http://localhost:6006
 
 ## Scripts
 
-| Script                       | Description                                                  |
-| ---------------------------- | ------------------------------------------------------------ |
-| `pnpm start`                 | Storybook dev server                                         |
-| `pnpm run build`             | Builds the library into `dist/ui` (Angular Package Format)   |
-| `pnpm run build-storybook`   | Static Storybook build (→ `storybook-static/`)               |
-| `pnpm test`                  | Unit tests (Vitest)                                          |
-| `pnpm run test:coverage`     | Unit tests with coverage report and thresholds               |
-| `pnpm run test-storybook:ci` | Storybook interaction tests against the built Storybook      |
-| `pnpm run lint`              | Lint (ESLint, includes Sheriff module boundaries)            |
-| `pnpm run format`            | Format the whole project (Prettier)                          |
+| Script                       | Description                                                |
+| ---------------------------- | ---------------------------------------------------------- |
+| `pnpm start`                 | Storybook dev server                                       |
+| `pnpm run build`             | Builds the library into `dist/ui` (Angular Package Format) |
+| `pnpm run build-storybook`   | Static Storybook build (→ `storybook-static/`)             |
+| `pnpm test`                  | Unit tests (Vitest)                                        |
+| `pnpm run test:coverage`     | Unit tests with coverage report and thresholds             |
+| `pnpm run test-storybook:ci` | Storybook interaction tests against the built Storybook    |
+| `pnpm run lint`              | Lint (ESLint, includes Sheriff module boundaries)          |
+| `pnpm run format`            | Format the whole project (Prettier)                        |
 
 ## Next steps
 
