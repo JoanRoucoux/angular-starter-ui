@@ -6,7 +6,7 @@ Thanks for your interest in this project!
 
 - Node.js LTS
 - [pnpm](https://pnpm.io)
-- `pnpm install` (installs dependencies and generates the API clients)
+- `pnpm install`
 
 ## Workflow
 
@@ -17,7 +17,7 @@ Thanks for your interest in this project!
    pnpm run lint
    pnpm run format:check
    pnpm test
-   pnpm run e2e
+   pnpm run build-storybook && pnpm run test-storybook:ci
    ```
 4. Commit using a [Conventional Commits](https://www.conventionalcommits.org) message (`feat: ...`, `fix: ...`, `chore: ...`), automatically validated by commitlint.
 5. Open a Pull Request filling in the provided template.

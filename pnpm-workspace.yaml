@@ -1,7 +1,9 @@
 allowBuilds:
   '@parcel/watcher': true
+  '@swc/core': true
   esbuild: true
   lmdb: true
   msgpackr-extract: true
+  unrs-resolver: true
 minimumReleaseAgeExclude:
   - lint-staged@17.1.0

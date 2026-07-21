@@ -1,167 +1,151 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.svg" />
-  <img src=".github/assets/banner-light.svg" alt="Angular Starter Web — ready-to-use Angular starter" />
+  <img src=".github/assets/banner-light.svg" alt="Angular Starter UI — ready-to-use Angular design system starter" />
 </picture>
 <br>
 <br>
 
-[![CI](https://github.com/JoanRoucoux/angular-starter-web/actions/workflows/ci.yml/badge.svg)](https://github.com/JoanRoucoux/angular-starter-web/actions/workflows/ci.yml)
+[![CI](https://github.com/JoanRoucoux/angular-starter-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/JoanRoucoux/angular-starter-ui/actions/workflows/ci.yml)
 [![Angular](https://img.shields.io/badge/Angular-22-dd0031?logo=angular)](https://angular.dev)
+[![Storybook](https://img.shields.io/badge/Storybook-10-ff4785?logo=storybook&logoColor=white)](https://storybook.js.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![pnpm](https://img.shields.io/badge/pnpm-managed-f69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 
-Ready-to-use Angular starter for building a new web application connected to a backend, with every best practice and tool already wired up.
+Ready-to-use Angular starter for building a design system: a publishable component library (standalone, zoneless, signals) and a Storybook workshop, with every best practice and tool already wired up.
 
-Apps built from this starter are meant to be embedded in a portal that owns the global chrome (header, sidebar, main navigation): the app only renders its body. No integration mechanism is assumed — the app remains a standalone SPA that builds, runs and tests on its own. Language is meant to be driven by the host portal through `LanguageService.setActiveLang()`; the theme follows the OS preference unless the host forces one by setting `data-theme` on `<html>`.
+The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and three example components (button, input, badge) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and 100% unit test coverage.
 
 ## Stack
 
-| Tool                                                                                                                                                                                   | Role                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Angular 22](https://angular.dev)                                                                                                                                                      | Framework (standalone, zoneless, signals)             |
-| [Tailwind CSS](https://tailwindcss.com)                                                                                                                                                | Utility-first CSS                                     |
-| [ESLint](https://eslint.org) + [angular-eslint](https://github.com/angular-eslint/angular-eslint)                                                                                      | Lint for TypeScript code and templates                |
-| [Prettier](https://prettier.io) + [sort-imports](https://github.com/trivago/prettier-plugin-sort-imports) + [tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) | Code formatting, import ordering and class sorting    |
-| [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com/docs/angular-testing-library/intro)                                                                       | Unit tests (Angular's default runner)                 |
-| [Playwright](https://playwright.dev)                                                                                                                                                   | End-to-end tests                                      |
-| [Transloco](https://jsverse.gitbook.io/transloco)                                                                                                                                      | Internationalization (en/fr, runtime language switch) |
-| [Orval](https://orval.dev)                                                                                                                                                             | Generates models and HTTP clients from OpenAPI        |
-| [Sheriff](https://sheriff.softarc.io)                                                                                                                                                  | Enforces module boundaries (core/features/shared)     |
-| [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)                                                                                  | Git hooks (format + lint on commit)                   |
-| [commitlint](https://commitlint.js.org)                                                                                                                                                | Commit message validation (Conventional Commits)      |
-| GitHub Actions                                                                                                                                                                         | CI: format, lint, tests, build, e2e                   |
-
-The UI component library is not included: plug in the one of your choice.
+| Tool                                                                                                                                                                                   | Role                                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Angular 22](https://angular.dev) + [ng-packagr](https://github.com/ng-packagr/ng-packagr)                                                                                             | Framework and library build (Angular Package Format)     |
+| [Storybook 10](https://storybook.js.org) (`@storybook/angular-vite`)                                                                                                                   | Component workshop: autodocs, a11y addon, theme switcher |
+| [Tailwind CSS](https://tailwindcss.com)                                                                                                                                                | Utility-first CSS consuming the design tokens            |
+| [ESLint](https://eslint.org) + [angular-eslint](https://github.com/angular-eslint/angular-eslint) + [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook)  | Lint for TypeScript code, templates and stories          |
+| [Prettier](https://prettier.io) + [sort-imports](https://github.com/trivago/prettier-plugin-sort-imports) + [tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) | Code formatting, import ordering and class sorting       |
+| [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com/docs/angular-testing-library/intro)                                                                       | Unit tests (Angular's default runner)                    |
+| [Storybook test-runner](https://github.com/storybookjs/test-runner)                                                                                                                    | Runs every story and its `play` interaction tests in CI  |
+| [Sheriff](https://sheriff.softarc.io)                                                                                                                                                  | Enforces module boundaries (components stay isolated)    |
+| [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)                                                                                  | Git hooks (format + lint on commit)                      |
+| [commitlint](https://commitlint.js.org)                                                                                                                                                | Commit message validation (Conventional Commits)         |
+| GitHub Actions                                                                                                                                                                         | CI: format, lint, unit tests, builds, interaction tests  |
 
 ## Getting started
 
 ```bash
-pnpm install    # installs dependencies and generates the API clients (postinstall)
-pnpm start      # dev server on http://localhost:4200
+pnpm install    # installs dependencies
+pnpm start      # Storybook on http://localhost:6006
 ```
 
-Calls to `/api` are proxied to `http://localhost:8080` by the dev proxy ([proxy.conf.json](proxy.conf.json)): adjust the target to your backend.
+Storybook is the development surface: components are built and reviewed through their stories, there is no demo application.
 
 ## Scripts
 
-| Script                   | Description                                          |
-| ------------------------ | ---------------------------------------------------- |
-| `pnpm start`             | Dev server (with API proxy)                          |
-| `pnpm run build`         | Production build into `dist/`                        |
-| `pnpm test`              | Unit tests (Vitest)                                  |
-| `pnpm run test:coverage` | Unit tests with coverage report and thresholds       |
-| `pnpm run e2e`           | End-to-end tests (Playwright)                        |
-| `pnpm run e2e:ui`        | E2e tests in interactive mode                        |
-| `pnpm run lint`          | Lint (ESLint)                                        |
-| `pnpm run lint:fix`      | Lint with automatic fixes                            |
-| `pnpm run format`        | Format the whole project (Prettier)                  |
-| `pnpm run format:check`  | Check formatting without modifying anything          |
-| `pnpm run generate:api`  | Regenerates clients and models from the OpenAPI spec |
-
-Component tests use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free and matches the Playwright `getByRole` style used in e2e. Services, interceptors and form schemas are tested with plain `TestBed`. The [jest-dom](https://github.com/testing-library/jest-dom) matchers (`toBeInTheDocument`, `toBeEnabled`, ...) are registered in [src/test-setup.ts](src/test-setup.ts).
-
-E2e tests live in `e2e/` (`pages/` for page objects, `fixtures/` for custom test fixtures), next to the app rather than in a separate package.
+| Script                       | Description                                                        |
+| ---------------------------- | ------------------------------------------------------------------ |
+| `pnpm start`                 | Storybook dev server on `http://localhost:6006`                    |
+| `pnpm run build`             | Builds the library into `dist/ui` (Angular Package Format)         |
+| `pnpm run build-storybook`   | Builds the static Storybook into `storybook-static/`               |
+| `pnpm test`                  | Unit tests (Vitest)                                                |
+| `pnpm run test:coverage`     | Unit tests with coverage report and thresholds                     |
+| `pnpm run test-storybook`    | Interaction tests against a running Storybook (`pnpm start` first) |
+| `pnpm run test-storybook:ci` | Serves `storybook-static/` and runs the interaction tests on it    |
+| `pnpm run lint`              | Lint (ESLint)                                                      |
+| `pnpm run lint:fix`          | Lint with automatic fixes                                          |
+| `pnpm run format`            | Format the whole project (Prettier)                                |
+| `pnpm run format:check`      | Check formatting without modifying anything                        |
 
 ## Project structure
 
-Based on the [angular-tips](https://angular-tips.dev) recommendations: grouped by business domain, not by technical type.
-
 ```txt
-src/
-├── app/
-│   ├── core/                  # Global, non-business-specific features
-│   │   ├── api/               # ⚠️ Generated by Orval, do not edit or commit
-│   │   ├── i18n/              # Transloco config, LanguageService, page title strategy
-│   │   ├── interceptors/      # HTTP interceptors (error handling, ...)
-│   │   ├── logger/            # LoggerService (only place allowed to call console)
-│   │   ├── models/            # Shared core models (LogLevel, ...)
-│   │   └── not-found-page/    # 404 page
-│   ├── features/              # Business features, grouped by domain
-│   │   ├── home/              # Home page (eagerly loaded)
-│   │   │   └── pages/home-page/
-│   │   └── users/             # Example of a full feature (lazy loaded)
-│   │       ├── pages/         # One folder per page, named <verb>-<entity>-page
-│   │       │   ├── browse-users-page/   # User list (rxResource)
-│   │       │   ├── create-user-page/    # User creation (signal form)
-│   │       │   └── view-user-page/      # User detail (route param + rxResource)
-│   │       ├── data/          # In/out calls of the feature (wraps the generated core/api client)
-│   │       ├── forms/         # Form models and validation schemas
-│   │       └── users.routes.ts
-│   └── shared/                # Reusable code
-│       ├── forms/             # Generic form helpers (error display, ...)
-│       └── testing/           # Test utilities
-├── environments/              # Per-environment variables (replaced at build time)
-└── styles.css                 # Global styles: Tailwind import + --app-* CSS variables
+.storybook/                  # Storybook config: main.ts, preview.ts (theme switcher), preview.css
+projects/ui/
+├── ng-package.json          # ng-packagr config (entry point, shipped assets)
+├── package.json             # Library manifest (rename before publishing)
+├── styles/
+│   └── tokens.css           # Design tokens — shipped as dist/ui/styles/tokens.css
+├── docs/                    # Storybook "Foundations" MDX pages (colors, typography)
+└── src/
+    ├── public-api.ts        # The library's only entry point
+    └── lib/
+        ├── button/          # button.ts + button.spec.ts + button.stories.ts
+        ├── input/
+        └── badge/
 ```
 
-Anatomy of a feature: `pages/` (one folder per page: component + template + spec), `data/` (a service centralizing the feature's in/out calls — pages never import the generated `core/api` client directly), `forms/` (form models and validation schemas, tested on their own), and a routes file. Pages are named `<verb>-<entity>-page` (browse, create, view, ...) and each lives in a folder carrying its full name, matching what `ng generate component` produces. Feature-specific configuration lives in a colocated file (e.g. an `InjectionToken` in `users.config.ts`) when a real need appears; configuration common to all features belongs in `core` or `src/environments`.
+Each component lives in its own folder with its spec and stories co-located. Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): components cannot import each other — shared building blocks get their own module. Modules are barrel-less: import files directly (no `index.ts`), and place files a module wants to keep private in an `internal/` subdirectory. `public-api.ts` is the single public entry point of the package.
 
-Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): `features` can import `core` and `shared`; `core` can import `shared`; `shared` imports neither `core` nor `features`; features cannot import each other — code shared between features belongs in `core` or `shared`. Modules are barrel-less: import files directly (no `index.ts`), and place files a module wants to keep private in an `internal/` subdirectory.
+## Design tokens and theming
 
-Available import aliases: `@core/*`, `@features/*`, `@shared/*`, `@environments/*`.
+All colors come from [projects/ui/styles/tokens.css](projects/ui/styles/tokens.css), a pure token sheet (no resets, no element styles) shipped with the package. Tokens follow the [shadcn/ui](https://ui.shadcn.com/docs/theming) semantic convention on a neutral zinc scale.
 
-## Talking to the backend
-
-The API contract is described in [openapi/openapi.yaml](openapi/openapi.yaml). TypeScript models and Angular services are generated by Orval into `src/app/core/api` (gitignored, regenerated on every `pnpm install`).
-
-To bootstrap a real project:
-
-1. Replace `openapi/openapi.yaml` with your backend's specification (or point `orval.config.ts` at its URL).
-2. Run `pnpm run generate:api`.
-3. Wrap the generated services in the feature's `data/` layer, which owns the data/error/loading states with `rxResource`; pages consume ready-made resources:
-
-```ts
-// features/users/data/users-api.ts
-@Injectable({ providedIn: 'root' })
-export class UsersApi {
-  #usersService = inject(UsersService); // generated by Orval
-
-  usersResource(): ResourceRef<User[]> {
-    return rxResource({
-      stream: () => this.#usersService.getUsers(),
-      defaultValue: [],
-    });
-  }
-}
-
-// features/users/pages/browse/browse-users-page.ts
-export class BrowseUsersPage {
-  #usersApi = inject(UsersApi);
-
-  users = this.#usersApi.usersResource();
-  // → users.value(), users.error(), users.isLoading(), users.reload()
-}
-```
-
-HTTP error handling is centralized in `core/interceptors/error-handler-interceptor.ts`: hook up the toast/notification component of your UI library there.
-
-## Internationalization
-
-Translations live in `public/i18n/` (en and fr) and are split in two layers:
-
-- `public/i18n/<lang>.json` — global keys, preloaded before the app renders. Keep it minimal: only cross-cutting keys that must resolve synchronously, such as `pageTitle.*` (the title strategy translates on navigation, before any lazy scope has loaded) and the 404 page.
-- `public/i18n/<feature>/<lang>.json` — one [scope](https://jsverse.gitbook.io/transloco/lazy-load/scope-configuration) per feature, declared with `provideTranslocoScope('<feature>')` in the feature's routes and fetched lazily alongside it. Keys are read with the scope as prefix:
+Each token declares its light and dark value with `light-dark()`; the active scheme follows the OS preference unless the host forces one:
 
 ```html
-<h1>{{ 'users.browse.title' | transloco }}</h1>
+<html data-theme="dark">
+  <!-- forces dark, whatever the OS says -->
+</html>
 ```
 
-The language can be switched at runtime via `LanguageService.setActiveLang()` (called by the host portal) and is persisted in a cookie. Page titles are translated and suffixed automatically by `core/i18n/title-strategy.ts`.
+The Storybook toolbar theme switcher does exactly that, so every story can be reviewed in both themes. Components consume tokens through Tailwind arbitrary-value utilities (`bg-(--primary)`, `border-(--border)`, ...): retheming means editing one CSS file. The tokens are documented in Storybook under **Foundations**.
 
-## Styling
+## Components
 
-[Tailwind CSS v4](https://tailwindcss.com) is wired up via PostCSS ([.postcssrc.json](.postcssrc.json)) and imported once in [src/styles.css](src/styles.css) with `@import 'tailwindcss';`. No `tailwind.config.js` is needed for basic usage (Tailwind v4 is CSS-first); use `@theme` in `styles.css` to customize tokens if needed. Component-level styles still use `.scss` (see the `home-page.html` template for an example combining both).
+Three example components demonstrate the conventions (prefix `ui`, signal inputs, host class bindings):
+
+| Component | Selector            | API                                                                              |
+| --------- | ------------------- | -------------------------------------------------------------------------------- |
+| Button    | `button[ui-button]` | `variant`: primary \| secondary \| destructive \| ghost — `size`: sm \| md \| lg |
+| Input     | `input[uiInput]`    | Styled native input: works with any forms API without plumbing                   |
+| Badge     | `ui-badge`          | `variant`: primary \| secondary \| destructive \| outline                        |
+
+Button and input attach to native elements (Material-style attribute selectors), keeping native semantics, accessibility and forms compatibility for free:
+
+```html
+<button ui-button variant="destructive" size="sm">Delete</button>
+<input uiInput type="email" placeholder="you@example.com" />
+<ui-badge variant="outline">Draft</ui-badge>
+```
+
+## Storybook
+
+- **Autodocs**: every story is tagged `autodocs` globally ([.storybook/preview.ts](.storybook/preview.ts)); each component gets a generated docs page from its stories and `argTypes`.
+- **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story.
+- **Theming**: the toolbar switcher toggles `data-theme` on `<html>` via `withThemeByDataAttribute`, matching the tokens' `light-dark()` contract.
+- **Interaction tests**: stories declare `play` functions (imports from `storybook/test`); the [test-runner](https://github.com/storybookjs/test-runner) executes every story in Chromium in CI (`pnpm run test-storybook:ci`).
+- **Foundations**: MDX pages in [projects/ui/docs](projects/ui/docs) document the color tokens (light and dark swatches) and typography.
+
+## Using the library in your app
+
+The publishable artifact is built from `projects/ui` into `dist/ui`. Before publishing, rename the package in [projects/ui/package.json](projects/ui/package.json) (e.g. `@your-scope/ui`) — the root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
+
+In the consuming app:
+
+1. Install the package and its peer dependencies (`@angular/common`, `@angular/core`).
+2. Import the token sheet once, e.g. in `styles.css`:
+   ```css
+   @import '@your-scope/ui/styles/tokens.css';
+   ```
+3. **Tailwind consumers**: the library's templates are inside `node_modules`, which Tailwind does not scan by default. Add a [`@source`](https://tailwindcss.com/docs/detecting-classes-in-source-files#explicitly-registering-sources) so the utilities used by the components are generated:
+   ```css
+   @import 'tailwindcss';
+   @source '../node_modules/@your-scope/ui';
+   ```
+   Non-Tailwind consumers only need the tokens import: component class names would then need to be covered by your own CSS strategy — in that case prefer forking the components into your design system, which is what a starter is for.
+
+## Testing
+
+- **Unit tests** use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free. The [jest-dom](https://github.com/testing-library/jest-dom) matchers are registered in [projects/ui/src/test-setup.ts](projects/ui/src/test-setup.ts).
+- **Coverage** is at 100% and must stay there; the CI thresholds (85/80/70/85 in [angular.json](angular.json)) are intentionally lower so downstream users of the starter are not blocked. Stories are excluded from coverage.
+- **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser via the Storybook test-runner — the Vitest addon is not used because it does not support Angular.
 
 ## Quality and conventions
 
 - **On commit**: lint-staged formats and lints the staged files; commitlint enforces [Conventional Commits](https://www.conventionalcommits.org) (`feat: ...`, `fix: ...`, ...).
-- **In CI** ([.github/workflows/ci.yml](.github/workflows/ci.yml)): format check, lint, unit tests, build and e2e on every push/PR.
-- **Code conventions**: see [angular-tips](https://angular-tips.dev) and the [Angular style guide](https://angular.dev/style-guide). In short: standalone components (`OnPush` change detection is the Angular default since v22, no need to declare it), signals (`input()`, `computed()`, `rxResource`), `inject()`, private `#` properties, control flow (`@if`, `@for`), no `.component`/`.service` suffix in file names, pages suffixed with `-page`.
+- **In CI** ([.github/workflows/ci.yml](.github/workflows/ci.yml)): format check, lint, unit tests, library build, Storybook build and interaction tests on every push/PR.
+- **Code conventions**: see the [Angular style guide](https://angular.dev/style-guide). In short: standalone components (`OnPush` change detection is the Angular default since v22, no need to declare it), signals (`input()`, `computed()`), `inject()`, private `#` properties, control flow (`@if`, `@for`), no `.component`/`.directive` suffix in file names.
 - **Config files** use ESM `.mjs` where the tool supports it: [eslint.config.mjs](eslint.config.mjs), [prettier.config.mjs](prettier.config.mjs), [commitlint.config.mjs](commitlint.config.mjs).
-
-## Environments
-
-`src/environments/environment.ts` holds local development values and is replaced at build time by `environment.production.ts` (see `fileReplacements` in [angular.json](angular.json)). Always import `@environments/environment`, never a specific file.
 
 ## Contributing
 

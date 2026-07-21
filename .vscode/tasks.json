@@ -3,42 +3,18 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "pnpm: start",
+      "label": "pnpm: storybook",
       "type": "shell",
       "command": "pnpm run start",
       "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "Changes detected"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation (complete|failed)"
-          }
-        }
-      }
+      "problemMatcher": []
     },
     {
       "label": "pnpm: test",
       "type": "shell",
       "command": "pnpm run test",
       "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "Changes detected"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation (complete|failed)"
-          }
-        }
-      }
+      "problemMatcher": []
     }
   ]
 }
