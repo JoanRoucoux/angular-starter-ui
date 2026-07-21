@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.0.0...v1.1.0) (2026-07-21)
+
+
+### Features
+
+* make the starter generator-enabled ([e6010eb](https://github.com/JoanRoucoux/angular-starter-ui/commit/e6010eba5140cf5151fbaec7e0976daf01bb430b))
+
+
+### Bug Fixes
+
+* align the generated README table with Prettier's formatting ([cd3dd87](https://github.com/JoanRoucoux/angular-starter-ui/commit/cd3dd87f86662cd303ae5e00bfc3b076599632e9))
+
 ## 1.0.0 (2026-07-21)
 
 
