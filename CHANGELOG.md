@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.1.0...v1.2.0) (2026-07-23)
+
+
+### Features
+
+* **ui:** export component variant/size types and their value tuples ([4771f41](https://github.com/JoanRoucoux/angular-starter-ui/commit/4771f41aae588c61a01b07c16ce63774c5c91e28))
+
+
+### Bug Fixes
+
+* **ui:** resolve tsconfig rootDir and inlineSources diagnostics ([5b9e2b7](https://github.com/JoanRoucoux/angular-starter-ui/commit/5b9e2b7c4dc64db868af488abdfa5f5b9ff182fa))
+
 ## [1.1.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.0.0...v1.1.0) (2026-07-21)
 
 

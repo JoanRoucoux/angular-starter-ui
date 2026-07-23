@@ -1,6 +1,6 @@
 {
   "name": "angular-starter-ui",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Ready-to-use Angular design system starter: a publishable component library with Storybook, ESLint, Prettier, Tailwind CSS, Vitest and Sheriff already wired up.",
   "keywords": [
     "angular",
