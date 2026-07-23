@@ -1,7 +1,12 @@
 import { Component, computed, input } from '@angular/core';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'destructive' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+/** Available button variants. `ButtonVariant` is derived from this tuple. */
+export const BUTTON_VARIANTS = ['primary', 'secondary', 'destructive', 'ghost'] as const;
+export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
+
+/** Available button sizes. `ButtonSize` is derived from this tuple. */
+export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const;
+export type ButtonSize = (typeof BUTTON_SIZES)[number];
 
 const BASE_CLASSES =
   'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:pointer-events-none disabled:opacity-50';

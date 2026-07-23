@@ -135,6 +135,22 @@ In the consuming app:
    ```
    Non-Tailwind consumers only need the tokens import: component class names would then need to be covered by your own CSS strategy — in that case prefer forking the components into your design system, which is what a starter is for.
 
+The library exports each component's own types so you never recreate them. Every variant/size union comes with a matching `as const` tuple (the single source of truth the type is derived from), so you get both the type and the runtime list:
+
+```ts
+import { BUTTON_VARIANTS, type ButtonVariant } from '@your-scope/ui';
+
+// Type your own props with the library's union...
+function setTone(variant: ButtonVariant) {
+  /* ... */
+}
+
+// ...and iterate the values without hardcoding them (selects, validation, docs).
+const options = BUTTON_VARIANTS.map((variant) => ({ label: variant, value: variant }));
+```
+
+Exported today: `ButtonVariant` / `BUTTON_VARIANTS`, `ButtonSize` / `BUTTON_SIZES`, `BadgeVariant` / `BADGE_VARIANTS`.
+
 ## Testing
 
 - **Unit tests** use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free. The [jest-dom](https://github.com/testing-library/jest-dom) matchers are registered in [projects/ui/src/test-setup.ts](projects/ui/src/test-setup.ts).

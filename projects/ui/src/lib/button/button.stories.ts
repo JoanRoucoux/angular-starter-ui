@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
-import { type ButtonSize, type ButtonVariant, UiButton } from './button';
+import { BUTTON_SIZES, BUTTON_VARIANTS, type ButtonSize, type ButtonVariant, UiButton } from './button';
 
 type ButtonArgs = {
   variant: ButtonVariant;
@@ -26,8 +26,8 @@ const meta: Meta<ButtonArgs> = {
     onClick: fn(),
   },
   argTypes: {
-    variant: { control: 'select', options: ['primary', 'secondary', 'destructive', 'ghost'] },
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
+    variant: { control: 'select', options: [...BUTTON_VARIANTS] },
+    size: { control: 'select', options: [...BUTTON_SIZES] },
     disabled: { control: 'boolean' },
     label: { control: 'text' },
     onClick: { action: 'onClick', table: { disable: true } },

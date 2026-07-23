@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular-vite';
 import { expect, within } from 'storybook/test';
 
-import { type BadgeVariant, UiBadge } from './badge';
+import { BADGE_VARIANTS, type BadgeVariant, UiBadge } from './badge';
 
 type BadgeArgs = {
   variant: BadgeVariant;
@@ -20,7 +20,7 @@ const meta: Meta<BadgeArgs> = {
     label: 'Badge',
   },
   argTypes: {
-    variant: { control: 'select', options: ['primary', 'secondary', 'destructive', 'outline'] },
+    variant: { control: 'select', options: [...BADGE_VARIANTS] },
     label: { control: 'text' },
   },
 };

@@ -1,6 +1,8 @@
 import { Component, computed, input } from '@angular/core';
 
-export type BadgeVariant = 'primary' | 'secondary' | 'destructive' | 'outline';
+/** Available badge variants. `BadgeVariant` is derived from this tuple. */
+export const BADGE_VARIANTS = ['primary', 'secondary', 'destructive', 'outline'] as const;
+export type BadgeVariant = (typeof BADGE_VARIANTS)[number];
 
 const BASE_CLASSES = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium';
 
