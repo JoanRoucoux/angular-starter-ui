@@ -46,6 +46,7 @@ Storybook is the development surface: components are built and reviewed through 
 | ---------------------------- | ------------------------------------------------------------------ |
 | `pnpm start`                 | Storybook dev server on `http://localhost:6006`                    |
 | `pnpm run build`             | Builds the library into `dist/ui` (Angular Package Format)         |
+| `pnpm run build:dev`         | Development build of the library                                   |
 | `pnpm run build-storybook`   | Builds the static Storybook into `storybook-static/`               |
 | `pnpm test`                  | Unit tests (Vitest)                                                |
 | `pnpm run test:coverage`     | Unit tests with coverage report and thresholds                     |
@@ -149,7 +150,7 @@ In the consuming app:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community guidelines. To report a vulnerability, see [SECURITY.md](SECURITY.md).
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the contribution workflow and [CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md) for community guidelines. To report a vulnerability, see [SECURITY.md](.github/SECURITY.md).
 
 ## License
 

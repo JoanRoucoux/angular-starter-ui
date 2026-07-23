@@ -35,6 +35,7 @@
     "start": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
     "build": "ng build",
+    "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
     "build-storybook": "storybook build",
     "test": "ng test",
