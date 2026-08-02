@@ -29,7 +29,7 @@ The starter ships a documented set of design tokens (neutral zinc scale, light a
 | [Sheriff](https://sheriff.softarc.io)                                                                                                                                                  | Enforces module boundaries (components stay isolated)    |
 | [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)                                                                                  | Git hooks (format + lint on commit)                      |
 | [commitlint](https://commitlint.js.org)                                                                                                                                                | Commit message validation (Conventional Commits)         |
-| GitHub Actions                                                                                                                                                                         | CI: format, lint, unit tests, builds, interaction tests  |
+| [GitHub Actions](https://github.com/features/actions)                                                                                                                                  | CI: format, lint, unit tests, builds, interaction tests  |
 
 ## Getting started
 
