@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.2.0...v1.2.1) (2026-08-02)
+
+
+### Bug Fixes
+
+* **deps:** revert typescript to 6.0.3 and pin all dependency versions ([15dfd7c](https://github.com/JoanRoucoux/angular-starter-ui/commit/15dfd7c0979204bb2962f585d44da4341c960ad3))
+
 ## [1.2.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.1.0...v1.2.0) (2026-07-23)
 
 
