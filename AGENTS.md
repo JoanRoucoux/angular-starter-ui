@@ -67,7 +67,7 @@ Keep them in sync with the starter:
 - The manifest patches both [package.json](package.json) and [projects/ui/package.json](projects/ui/package.json) (the published name); if the library layout moves, update the manifest paths.
 - Template-only content (community files, release tooling) must be listed in the manifest's `remove`.
 - `.generator/templates/` stays excluded in [.prettierignore](.prettierignore) and the ESLint `globalIgnores`.
-- The `generate` job in [ci.yml](.github/workflows/ci.yml) generates a project from the working tree and runs its quality gates — it fails when the manifest or templates drift.
+- [generator-check.yml](.github/workflows/generator-check.yml) generates a project from the working tree and runs its quality gates — it fails when the manifest or templates drift. It is starter-only: listed in the manifest's `remove` so generated projects don't inherit a self-check that fails outside the starter (no `generator.config.json` left to generate from).
 
 ## Gotchas
 
