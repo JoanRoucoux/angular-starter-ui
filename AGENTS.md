@@ -77,3 +77,4 @@ Keep them in sync with the starter:
 - npm consumers of the published library must add `@source '../node_modules/<pkg>'` to their Tailwind CSS — templates in `node_modules` are not scanned by default. Keep this documented in the README.
 - The root package version (release-please) is the starter's version; the library's own version lives in `projects/ui/package.json` and is bumped manually before publishing `dist/ui`.
 - Nothing is committed or pushed without an explicit request from the maintainer.
+- `pnpm-workspace.yaml` overrides `playwright` and `playwright-core` to `$@playwright/test`: `@storybook/test-runner` brings its own Playwright, and CI installed the browser with one version and launched it with the other, which broke every Dependabot bump that moved only one. pnpm deprecates the `$` reference in favour of catalogs, but Dependabot does not update catalog entries, so the override stays.
