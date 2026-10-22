@@ -1,5 +1,5 @@
 {
-  "name": "ui",
+  "name": "angular-starter-ui",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^22.0.0",

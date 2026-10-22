@@ -64,15 +64,14 @@ projects/ui/
 ├── styles/
 │   └── tokens.css           # Design tokens — shipped as dist/ui/styles/tokens.css
 ├── docs/                    # Storybook "Foundations" MDX pages (colors, typography)
+├── button/                  # One entry point per component: ng-package.json, index.ts,
+├── input/                   # button.ts + button.spec.ts + button.stories.ts
+├── badge/
 └── src/
-    ├── public-api.ts        # The library's only entry point
-    └── lib/
-        ├── button/          # button.ts + button.spec.ts + button.stories.ts
-        ├── input/
-        └── badge/
+    └── public-api.ts        # Exports nothing on purpose
 ```
 
-Each component lives in its own folder with its spec and stories co-located. Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): components cannot import each other — shared building blocks get their own module. Modules are barrel-less: import files directly (no `index.ts`), and place files a module wants to keep private in an `internal/` subdirectory. `public-api.ts` is the single public entry point of the package.
+Each component lives in its own folder with its spec and stories co-located. Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): components cannot import each other — shared building blocks get their own module. Modules are barrel-less: import files directly (no `index.ts`), and place files a module wants to keep private in an `internal/` subdirectory. Each folder is its own entry point (`ng-package.json` + `index.ts`) so a consumer pulls in only the components it imports; `public-api.ts` exports nothing and must never re-export an entry.
 
 ## Design tokens and theming
 
@@ -135,7 +134,7 @@ In the consuming app:
 The library exports each component's own types so you never recreate them. Every variant/size union comes with a matching `as const` tuple (the single source of truth the type is derived from), so you get both the type and the runtime list:
 
 ```ts
-import { BUTTON_VARIANTS, type ButtonVariant } from '@your-scope/ui';
+import { BUTTON_VARIANTS, type ButtonVariant } from '@your-scope/ui/button';
 
 // Type your own props with the library's union...
 function setTone(variant: ButtonVariant) {

@@ -24,7 +24,7 @@ pnpm start      # Storybook on http://localhost:6006
 
 ## Next steps
 
-- Grow your components in `projects/ui/src/lib/`: one folder per component (`badge`, `button` and `input` are the reference implementations), each exported from `projects/ui/src/public-api.ts`.
+- Grow your components in `projects/ui/<folder>/`: one folder per component, each its own entry point (`ng-package.json` + `index.ts`), imported as `{{projectName}}/<folder>` (`badge`, `button` and `input` are the reference implementations). `projects/ui/src/public-api.ts` exports nothing on purpose.
 - Make the design tokens yours in `projects/ui/styles/tokens.css` — components consume them through Tailwind arbitrary values and never hardcode colors.
 - The published package is named `{{projectName}}` ([projects/ui/package.json](projects/ui/package.json)); switch to a scope (e.g. `@your-scope/ui`) there if needed. Its version is managed in that file, independently of the root version.
 
@@ -34,5 +34,6 @@ The publishable artifact is built from `projects/ui` into `dist/ui`. Consumers m
 
 1. Import the tokens: `@import '{{projectName}}/styles/tokens.css';`
 2. Register the package as a Tailwind source (templates in `node_modules` are not scanned by default): `@source '../node_modules/{{projectName}}';`
+3. Import each component from its entry point: `import { UiButton } from '{{projectName}}/button';`
 
 See [AGENTS.md](AGENTS.md) for the architecture, conventions and testing guidelines inherited from the starter.
