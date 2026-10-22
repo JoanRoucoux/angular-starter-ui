@@ -1,1 +1,1 @@
-export { UiInput } from './input';
+export { UiInput, UiTextarea } from './input';

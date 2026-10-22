@@ -91,11 +91,13 @@ The Storybook toolbar theme switcher does exactly that, so every story can be re
 
 Three example components demonstrate the conventions (prefix `ui`, signal inputs, host class bindings):
 
-| Component | Selector            | API                                                                              |
-| --------- | ------------------- | -------------------------------------------------------------------------------- |
-| Button    | `button[ui-button]` | `variant`: primary \| secondary \| destructive \| ghost — `size`: sm \| md \| lg |
-| Input     | `input[uiInput]`    | Styled native input: works with any forms API without plumbing                   |
-| Badge     | `ui-badge`          | `variant`: primary \| secondary \| destructive \| outline                        |
+| Component | Selector               | API                                                                              |
+| --------- | ---------------------- | -------------------------------------------------------------------------------- |
+| Button    | `button[ui-button]`    | `variant`: primary \| secondary \| destructive \| ghost — `size`: sm \| md \| lg |
+| Input     | `input[uiInput]`       | Styled native input: works with any forms API without plumbing                   |
+| Badge     | `ui-badge`             | `variant`: primary \| secondary \| destructive \| outline                        |
+| Textarea  | `textarea[uiTextarea]` | Styled native textarea, same contract as the input                               |
+| Field     | `ui-field`             | `label`, `labelHidden`, `hint`, `error`: wires the projected input or textarea   |
 
 Button and input attach to native elements (Material-style attribute selectors), keeping native semantics, accessibility and forms compatibility for free:
 
