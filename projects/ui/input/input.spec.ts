@@ -21,10 +21,17 @@ describe('UiInput', () => {
     expect(screen.getByRole('textbox', { name: 'Email' })).toBeDisabled();
   });
 
-  it('styles the border from aria-invalid', async () => {
-    await render('<input uiInput aria-label="Email" aria-invalid="true" />', { imports: [UiInput] });
+  it('carries the variant that styles the border from aria-invalid, only effective when the attribute is set', async () => {
+    await render('<input uiInput aria-label="Valid" /><input uiInput aria-label="Invalid" aria-invalid="true" />', {
+      imports: [UiInput],
+    });
 
-    expect(screen.getByRole('textbox', { name: 'Email' })).toHaveClass('aria-invalid:border-(--destructive)');
+    const valid = screen.getByRole('textbox', { name: 'Valid' });
+    const invalid = screen.getByRole('textbox', { name: 'Invalid' });
+    expect(valid).toBeValid();
+    expect(invalid).toBeInvalid();
+    expect(valid).toHaveClass('aria-invalid:border-(--destructive)');
+    expect(invalid).toHaveClass('aria-invalid:border-(--destructive)');
   });
 
   it('styles the native textarea and accepts typing', async () => {

@@ -101,7 +101,7 @@ export const Disabled: Story = {
 export const AsLink: Story = {
   render: (args) => ({
     props: args,
-    template: `<a ui-button [variant]="variant" [size]="size" href="/report.pdf" download>{{ label }}</a>`,
+    template: `<a ui-button [variant]="variant" [size]="size" href="data:text/plain;charset=utf-8,report" download="report.txt">{{ label }}</a>`,
   }),
   args: { label: 'Download report' },
 };

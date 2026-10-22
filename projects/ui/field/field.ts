@@ -70,6 +70,7 @@ export class UiField {
 
   constructor() {
     let markedByField = false;
+    let ownDescribedBy: string | null | undefined;
 
     afterRenderEffect(() => {
       const control = this.#host.nativeElement.querySelector<HTMLElement>('input, textarea');
@@ -81,7 +82,15 @@ export class UiField {
       control.id ||= this.#id;
       this.#host.nativeElement.querySelector('label')!.htmlFor = control.id;
 
-      const describedBy = [this.hint() ? this.hintId : null, this.message() ? this.errorId : null].filter(Boolean);
+      if (ownDescribedBy === undefined) {
+        ownDescribedBy = control.getAttribute('aria-describedby');
+      }
+
+      const describedBy = [
+        ownDescribedBy,
+        this.hint() ? this.hintId : null,
+        this.message() ? this.errorId : null,
+      ].filter(Boolean);
 
       if (describedBy.length > 0) {
         control.setAttribute('aria-describedby', describedBy.join(' '));

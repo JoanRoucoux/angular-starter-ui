@@ -98,6 +98,52 @@ describe('UiField', () => {
     expect(screen.getByRole('textbox', { name: 'Notes' })).toHaveAccessibleDescription('Optional');
   });
 
+  it('keeps the aria-describedby the control already has', async () => {
+    await render(
+      '<ui-field label="Code"><input uiInput aria-describedby="code-help" /></ui-field><p id="code-help">Sent by email</p>',
+      {
+        imports: [UiField, UiInput],
+      },
+    );
+
+    expect(screen.getByRole('textbox', { name: 'Code' })).toHaveAccessibleDescription('Sent by email');
+  });
+
+  it('merges the aria-describedby of the control with the hint and the error', async () => {
+    await render(
+      '<ui-field label="Code" hint="Six digits" error="Wrong code"><input uiInput aria-describedby="code-help" /></ui-field><p id="code-help">Sent by email</p>',
+      { imports: [UiField, UiInput] },
+    );
+
+    expect(screen.getByRole('textbox', { name: 'Code' })).toHaveAccessibleDescription(
+      'Sent by email Six digits Wrong code',
+    );
+  });
+
+  it('gives the control its own description back once the hint and the error are gone', async () => {
+    const { rerender, fixture } = await render(
+      '<ui-field label="Code" [hint]="hint" [error]="error"><input uiInput aria-describedby="code-help" /></ui-field><p id="code-help">Sent by email</p>',
+      { imports: [UiField, UiInput], componentProperties: { hint: 'Six digits', error: 'Wrong code' } },
+    );
+
+    await rerender({ componentProperties: { hint: undefined, error: undefined } });
+    await fixture.whenStable();
+
+    expect(screen.getByRole('textbox', { name: 'Code' })).toHaveAccessibleDescription('Sent by email');
+  });
+
+  it('removes the description once the hint is gone from a control that had none', async () => {
+    const { rerender, fixture } = await render('<ui-field label="Code" [hint]="hint"><input uiInput /></ui-field>', {
+      imports: [UiField, UiInput],
+      componentProperties: { hint: 'Six digits' },
+    });
+
+    await rerender({ componentProperties: { hint: undefined } });
+    await fixture.whenStable();
+
+    expect(screen.getByRole('textbox', { name: 'Code' })).not.toHaveAttribute('aria-describedby');
+  });
+
   it('renders without a control', async () => {
     await render('<ui-field label="Empty" />', { imports: [UiField] });
 

@@ -83,6 +83,10 @@ jobs:
           fi
           npm --version
 
+      - name: Set the repository URL that provenance requires
+        working-directory: dist/ui
+        run: npm pkg set repository.type=git "repository.url=git+${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+
       - name: Publish to npm
         working-directory: dist/ui
         run: npm publish

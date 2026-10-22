@@ -10,7 +10,7 @@
 
 Ready-to-use Angular starter for building a design system: a publishable component library (standalone, zoneless, signals) and a Storybook workshop, with every best practice and tool already wired up.
 
-The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and example components (button, input, badge, textarea, field) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and 100% unit test coverage.
+The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and example components (button, input, badge, textarea, field) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and unit tests with enforced coverage thresholds.
 
 ## Stack
 
@@ -93,13 +93,13 @@ The Storybook toolbar theme switcher does exactly that, so every story can be re
 
 Five example components demonstrate the conventions (prefix `ui`, signal inputs, host class bindings):
 
-| Component | Selector               | API                                                                             |
-| --------- | ---------------------- | ------------------------------------------------------------------------------- |
-| Button    | `button[ui-button]`    | `variant`: primary \| secondary \| destructive \| ghost, `size`: sm \| md \| lg |
-| Input     | `input[uiInput]`       | Styled native input: works with any forms API without plumbing                  |
-| Badge     | `ui-badge`             | `variant`: primary \| secondary \| destructive \| outline                       |
-| Textarea  | `textarea[uiTextarea]` | Styled native textarea, same contract as the input                              |
-| Field     | `ui-field`             | `label`, `labelHidden`, `hint`, `error`: wires the projected input or textarea  |
+| Component | Selector                          | API                                                                             |
+| --------- | --------------------------------- | ------------------------------------------------------------------------------- |
+| Button    | `button[ui-button], a[ui-button]` | `variant`: primary \| secondary \| destructive \| ghost, `size`: sm \| md \| lg |
+| Input     | `input[uiInput]`                  | Styled native input: works with any forms API without plumbing                  |
+| Badge     | `ui-badge`                        | `variant`: primary \| secondary \| destructive \| outline                       |
+| Textarea  | `textarea[uiTextarea]`            | Styled native textarea, same contract as the input                              |
+| Field     | `ui-field`                        | `label`, `labelHidden`, `hint`, `error`: wires the projected input or textarea  |
 
 Button and input attach to native elements (Material-style attribute selectors), keeping native semantics, accessibility and forms compatibility for free:
 
@@ -110,6 +110,8 @@ Button and input attach to native elements (Material-style attribute selectors),
 ```
 
 ## Storybook
+
+The live Storybook is at https://joanroucoux.github.io/angular-starter-ui/.
 
 - **Autodocs**: every story is tagged `autodocs` globally ([.storybook/preview.ts](.storybook/preview.ts)); each component gets a generated docs page from its stories and `argTypes`.
 - **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story, and a violation fails `test-storybook:ci`.
@@ -122,26 +124,26 @@ Releases are made by tag with npm trusted publishing and Storybook is deployed t
 
 ## Using the library in your app
 
-The publishable artifact is built from `projects/ui` into `dist/ui`. Before publishing, rename the package in [projects/ui/package.json](projects/ui/package.json) (e.g. `@your-scope/ui`). The root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
+The publishable artifact is built from `projects/ui` into `dist/ui`. To rename the package (for example to a scope), change three places together: `name` in [projects/ui/package.json](projects/ui/package.json), the `paths` key in [tsconfig.json](tsconfig.json), and every quoted cross-entry import (`'angular-starter-ui/...'` in specs and stories); renaming only `package.json` breaks the build. The root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
 
 In the consuming app:
 
 1. Install the package and its peer dependencies (`@angular/common`, `@angular/core`).
 2. Import the token sheet once, e.g. in `styles.css`:
    ```css
-   @import '@your-scope/ui/styles/tokens.css';
+   @import 'angular-starter-ui/styles/tokens.css';
    ```
 3. **Tailwind consumers**: the library's templates are inside `node_modules`, which Tailwind does not scan by default. Add a [`@source`](https://tailwindcss.com/docs/detecting-classes-in-source-files#explicitly-registering-sources) so the utilities used by the components are generated:
    ```css
    @import 'tailwindcss';
-   @source '../node_modules/@your-scope/ui';
+   @source '../node_modules/angular-starter-ui';
    ```
    Non-Tailwind consumers only need the tokens import: component class names would then need to be covered by your own CSS strategy; in that case prefer forking the components into your design system, which is what a starter is for.
 
 The library exports each component's own types so you never recreate them. Every variant/size union comes with a matching `as const` tuple (the single source of truth the type is derived from), so you get both the type and the runtime list:
 
 ```ts
-import { BUTTON_VARIANTS, type ButtonVariant } from '@your-scope/ui/button';
+import { BUTTON_VARIANTS, type ButtonVariant } from 'angular-starter-ui/button';
 
 // Type your own props with the library's union...
 function setTone(variant: ButtonVariant) {
@@ -152,12 +154,12 @@ function setTone(variant: ButtonVariant) {
 const options = BUTTON_VARIANTS.map((variant) => ({ label: variant, value: variant }));
 ```
 
-Exported today: `ButtonVariant` / `BUTTON_VARIANTS`, `ButtonSize` / `BUTTON_SIZES`, `BadgeVariant` / `BADGE_VARIANTS`.
+Exported today: `ButtonVariant` / `BUTTON_VARIANTS`, `ButtonSize` / `BUTTON_SIZES` (from `/button`), `BadgeVariant` / `BADGE_VARIANTS` (from `/badge`), and from `/control` the `UI_CONTROL` token with the `UiControl` and `UiControlError` types.
 
 ## Testing
 
 - **Unit tests** use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free. The [jest-dom](https://github.com/testing-library/jest-dom) matchers are registered in [projects/ui/src/test-setup.ts](projects/ui/src/test-setup.ts).
-- **Coverage** is at 100% and must stay there; the CI thresholds (85/80/70/85 in [angular.json](angular.json)) are a floor. Stories are excluded from coverage.
+- **Coverage** is 100% on branches and lines, 97.27% on statements and 93.33% on functions (the `contentChild` query function in `field` counts as never called); the CI thresholds (statements 85, branches 80, functions 70, lines 85 in [angular.json](angular.json)) are a floor. Stories are excluded from coverage.
 - **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser via the Storybook test-runner. The Vitest addon is not used because it does not support Angular.
 
 ## Quality and conventions

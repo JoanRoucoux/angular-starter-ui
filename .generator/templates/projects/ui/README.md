@@ -33,6 +33,7 @@ Each component is its own entry point, and the package root exports nothing:
 
 ```ts
 import { UiButton } from '{{projectName}}/button';
+import { UiField } from '{{projectName}}/field';
 import { UiInput } from '{{projectName}}/input';
 ```
 

@@ -54,8 +54,7 @@
     {
       "extensions": [".ts", ".json", ".mdx", ".md"],
       "search": "'angular-starter-ui/",
-      "value": "'{{projectName}}/",
-      "optional": true
+      "value": "'{{projectName}}/"
     },
     {
       "extensions": [".ts", ".json", ".mdx", ".md"],
