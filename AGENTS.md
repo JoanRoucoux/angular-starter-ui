@@ -32,6 +32,13 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - `projects/ui/docs/` — Storybook "Foundations" MDX pages (colors, typography).
 - Module boundaries are enforced at lint time by Sheriff ([sheriff.config.ts](sheriff.config.ts)): **components never import each other unless `depRules` grants it** — shared building blocks get their own module. Each component folder is a Sheriff module whose `index.ts` is its barrel; private files go in an `internal/` subdirectory.
 
+## Release
+
+- The library version lives in `projects/ui/package.json`. To release: bump it in a pull request together with a `## X.Y.Z` section in `projects/ui/CHANGELOG.md`, merge, then push the tag `vX.Y.Z` on the merge commit. Never run `npm publish` by hand.
+- `.github/workflows/release.yml` fires on a `v*` tag: it checks that the tag equals `v` plus the library version and that the commit is on `main`, runs the whole pipeline, publishes `dist/ui` to npm through trusted publishing (OIDC, no token, provenance attached) and creates the GitHub Release from the changelog section.
+- npm only accepts a trusted publisher on an existing package: publish the first version once by hand with a token, then register `release.yml` as trusted publisher of the package on npmjs.com.
+- `.github/workflows/storybook.yml` deploys the static Storybook to GitHub Pages on every push to `main`; the repository needs Pages enabled with source "GitHub Actions", otherwise the deploy job fails.
+
 ## Conventions
 
 - Everything in the repo is written in **English** (code, comments, docs, commit messages).
@@ -79,9 +86,11 @@ Keep them in sync with the starter:
 
 - `typescript` is pinned to `~6.0.2`: TypeScript 7 breaks `typescript-eslint` (via `ts-api-utils`). Do not bump until typescript-eslint supports TS 7. (This is also why the Storybook framework is `@storybook/angular-vite` — the webpack `@storybook/angular` peer range only allows TS ≤5.)
 - `pnpm-workspace.yaml` `allowBuilds` is required for native postinstall scripts (esbuild, ...) — do not remove it.
-- GitHub Actions in `.github/workflows/ci.yml` are pinned by commit SHA (Dependabot keeps them updated) — when adding one, pin it the same way.
+- GitHub Actions in `.github/workflows/` are pinned by commit SHA with a `# vX.Y.Z` comment (Dependabot keeps them updated): when adding one, pin it the same way.
+- The required status check `ci` is the gate job of `ci.yml`, which needs `static`, `unit` and `storybook` and fails unless each result is `success` or `skipped` (`if: always()`, never `!cancelled()`, so a cancelled run turns the gate red). A new CI job must join its `needs`.
+- Dependabot groups every npm update in one pull request and every action update in another: the Storybook, Vite and Playwright families are coupled. TypeScript `>=7` is ignored for the reason in the first Gotcha.
 - npm consumers of the published library must add `@source '../node_modules/<pkg>'` to their Tailwind CSS — templates in `node_modules` are not scanned by default. Keep this documented in the README.
-- The root package version (release-please) is the starter's version; the library's own version lives in `projects/ui/package.json` and is bumped manually before publishing `dist/ui`.
+- In the starter repository itself `release.yml` never fires: release-please creates its `v1.x.y` tags with `GITHUB_TOKEN`, and events from that token start no workflow. The root package version belongs to release-please; the library version in `projects/ui/package.json` is the one `release.yml` publishes in a generated project.
 - Nothing is committed or pushed without an explicit request from the maintainer.
 - `pnpm-workspace.yaml` overrides `playwright` and `playwright-core` to `$@playwright/test`: `@storybook/test-runner` brings its own Playwright, and CI installed the browser with one version and launched it with the other, which broke every Dependabot bump that moved only one. pnpm deprecates the `$` reference in favour of catalogs, but Dependabot does not update catalog entries, so the override stays.
 - `field`, `input` and `control` are the reference for a component that depends on other entries: `ui-field` finds the projected control through the `UI_CONTROL` token (provided by `UiInput` and `UiTextarea`, which declare the `errors` and `touched` inputs that Angular's `[formField]` fills) and imports it by package path; Sheriff `depRules` grant `field` -> `input`, `control` and `input` -> `control`.
