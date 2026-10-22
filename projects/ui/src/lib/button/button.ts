@@ -9,7 +9,7 @@ export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const;
 export type ButtonSize = (typeof BUTTON_SIZES)[number];
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:pointer-events-none disabled:opacity-50';
+  'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:pointer-events-none disabled:opacity-50';
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: 'bg-(--primary) text-(--primary-foreground) hover:bg-(--primary)/90',
@@ -25,14 +25,14 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 };
 
 /**
- * Styled native button. Applied as an attribute so the host keeps every native
+ * Styled native button or anchor. Applied as an attribute so the host keeps every native
  * button behavior (type, disabled, form submission, accessibility) for free.
  *
  * @example
  * <button ui-button variant="destructive" size="sm">Delete</button>
  */
 @Component({
-  selector: 'button[ui-button]',
+  selector: 'button[ui-button], a[ui-button]',
   template: '<ng-content />',
   host: {
     '[class]': 'classes()',

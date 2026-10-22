@@ -37,6 +37,13 @@ export const Disabled: Story = {
   args: { disabled: true },
 };
 
+export const Invalid: Story = {
+  render: (args) => ({
+    props: args,
+    template: `<input uiInput [type]="type" [placeholder]="placeholder" [disabled]="disabled" aria-label="Example" aria-invalid="true" />`,
+  }),
+};
+
 export const AcceptsTyping: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

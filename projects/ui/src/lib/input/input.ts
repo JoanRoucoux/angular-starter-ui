@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 
 const INPUT_CLASSES =
-  'h-9 w-full rounded-md border border-(--border) bg-transparent px-3 text-sm text-(--foreground) transition-colors placeholder:text-(--muted-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:cursor-not-allowed disabled:opacity-50';
+  'h-9 w-full rounded-md border border-(--border) bg-transparent px-3 text-sm text-(--foreground) transition-colors placeholder:text-(--muted-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) aria-invalid:border-(--destructive) disabled:cursor-not-allowed disabled:opacity-50';
 
 /**
  * Styled native text input. A directive (not a wrapper component) so the host

@@ -63,6 +63,14 @@ export const Disabled: Story = {
   args: { disabled: true },
 };
 
+export const AsLink: Story = {
+  render: (args) => ({
+    props: args,
+    template: `<a ui-button [variant]="variant" [size]="size" href="/report.pdf" download>{{ label }}</a>`,
+  }),
+  args: { label: 'Download report' },
+};
+
 export const EmitsClicks: Story = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
