@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.0.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.2.1...v2.0.0) (2026-10-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** import components from <package>/<component> instead of the package root.
+
+### Features
+
+* **ui:** add field and control around input and textarea ([9b8d30c](https://github.com/JoanRoucoux/angular-starter-ui/commit/9b8d30c69320f270d6aec67eea126a7e1af7b4d7))
+
+
+### Bug Fixes
+
+* **ui:** export the stylesheets, show a pointer on buttons, style invalid inputs ([f16f5ff](https://github.com/JoanRoucoux/angular-starter-ui/commit/f16f5ff7c64f1e81634da409c3ed85342222ac0c))
+* **ui:** keep a control's own description and publish with provenance ([2363d03](https://github.com/JoanRoucoux/angular-starter-ui/commit/2363d03a103597f8e3834b8e0a0a31dd201bdfc0))
+
+
+### Code Refactoring
+
+* **ui:** one entry point per component ([0835d50](https://github.com/JoanRoucoux/angular-starter-ui/commit/0835d507cca97c5ee9addf8e7fa6d7d67d009375))
+
 ## [1.2.1](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.2.0...v1.2.1) (2026-08-02)
 
 
