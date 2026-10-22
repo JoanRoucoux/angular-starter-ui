@@ -54,6 +54,16 @@
       "extensions": [".ts", ".json", ".mdx", ".md"],
       "search": "\"angular-starter-ui/",
       "value": "\"{{projectName}}/"
+    },
+    {
+      "extensions": [".mdx", ".md"],
+      "search": "node_modules/angular-starter-ui",
+      "value": "node_modules/{{projectName}}"
+    },
+    {
+      "extensions": [".mdx", ".md"],
+      "search": "pnpm add angular-starter-ui",
+      "value": "pnpm add {{projectName}}"
     }
   ],
   "install": "pnpm install",

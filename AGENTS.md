@@ -48,7 +48,12 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - Stories are CSF3, co-located with their component, with manual `argTypes` (compodoc is not used). Attribute-selector components need a `render` with a `template` and a `moduleMetadata` decorator.
 - Test utilities (`fn`, `userEvent`, `within`, `expect`) are imported from the **`storybook/test`** subpath.
 - `autodocs` is enabled globally via `tags` in `.storybook/preview.ts` — do not re-tag individual stories.
-- The light/dark switcher is `withThemeByDataAttribute` toggling `data-theme` on `<html>`; tokens resolve via `light-dark()`. Never bypass it with story-level colors.
+- The theme switcher is `withThemeByDataAttribute` toggling `data-theme` on `<html>` with `system` (empty attribute, default), `light` and `dark`; tokens resolve via `light-dark()`, and an empty `data-theme` lets `color-scheme: light dark` follow the OS. Never bypass it with story-level colors.
+- Story titles are grouped by purpose (`Inputs/...`, `Data display/...`), and `storySort` in `.storybook/preview.ts` pins `Foundations` first with `Overview` as the landing page. Extend the `order` list when a group appears.
+- Compodoc is off, so every story meta carries `parameters.docs.description.component` (one sentence on what the component is, then `#### When to use`, `#### When not to use`, `#### Accessibility`) and every `argType` a `description`. Use neutral vocabulary (save, delete, draft, email).
+- `parameters.a11y.test` is `'error'`: an axe violation fails `test-storybook:ci`. Every story needs an accessible name for its controls.
+- The Storybook chrome (`.storybook/manager.ts`) and the Docs pages (`parameters.docs.theme` in `preview.ts`) take their theme from `.storybook/theme.ts` for the OS preference. The two halves agree on purpose; do not try to make the chrome follow the toolbar (neither `setConfig` nor `api.setOptions` re-themes a running manager, and a Docs page never re-renders on a globals change). A manager globals listener is `addons.register('id', (api) => api.on('updateGlobals', ...))`.
+- `theme.ts` restates the token colors in hex: editing a color in `tokens.css` means editing its twin in `theme.ts`, and in the inline style of `.storybook/preview-head.html`, which prevents a white flash on preview reload because `preview.css` arrives with the JS bundle.
 - Interaction tests are `play` functions, executed in CI by `@storybook/test-runner` against the built Storybook. The Storybook **Vitest addon is not an option**: it does not support Angular.
 - Foundations MDX pages live in `projects/ui/docs/` and use `Meta` from `@storybook/addon-docs/blocks`.
 
