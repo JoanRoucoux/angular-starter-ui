@@ -20,4 +20,10 @@ describe('UiInput', () => {
 
     expect(screen.getByRole('textbox', { name: 'Email' })).toBeDisabled();
   });
+
+  it('styles the border from aria-invalid', async () => {
+    await render('<input uiInput aria-label="Email" aria-invalid="true" />', { imports: [UiInput] });
+
+    expect(screen.getByRole('textbox', { name: 'Email' })).toHaveClass('aria-invalid:border-(--destructive)');
+  });
 });

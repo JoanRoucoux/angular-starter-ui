@@ -41,4 +41,16 @@ describe('UiButton', () => {
 
     expect(screen.getByRole('button', { name: 'Save' })).toHaveClass(expectedClass);
   });
+
+  it('shows a pointer cursor', async () => {
+    await render('<button ui-button>Save</button>', { imports: [UiButton] });
+
+    expect(screen.getByRole('button', { name: 'Save' })).toHaveClass('cursor-pointer');
+  });
+
+  it('styles an anchor like a button', async () => {
+    await render('<a ui-button href="/report.pdf" variant="secondary">Download</a>', { imports: [UiButton] });
+
+    expect(screen.getByRole('link', { name: 'Download' })).toHaveClass('bg-(--secondary)', 'cursor-pointer');
+  });
 });
