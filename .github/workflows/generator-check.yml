@@ -1,10 +1,5 @@
 name: Generator check
 
-# Guards against drift between the starter and its generator manifest/templates
-# (generator.config.json, .generator/templates/): generates a project from this
-# working tree with starter-generator and runs the project's own quality gates.
-# Starter-only: removed from generated projects by generator.config.json.
-
 on:
   push:
     branches: [main]
@@ -45,7 +40,6 @@ jobs:
         working-directory: ${{ runner.temp }}/generated/ci-check-ui
         run: pnpm install
 
-      # Mirrors the generator's postInstall step (skipped above with --skip-install).
       - name: Format the generated project
         working-directory: ${{ runner.temp }}/generated/ci-check-ui
         run: pnpm run format
@@ -57,3 +51,16 @@ jobs:
           pnpm run lint
           pnpm run test:coverage
           pnpm run build
+          pnpm run build-storybook
+
+      - name: Check that no starter text leaks into the generated project
+        working-directory: ${{ runner.temp }}/generated/ci-check-ui
+        run: |
+          if grep -rn "angular-starter-ui/" . --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=storybook-static --exclude-dir=.angular --exclude=pnpm-lock.yaml --exclude=.starter-manifest.json; then
+            echo "::error::A path of the starter library name survived generation"
+            exit 1
+          fi
+          if grep -in "starter" AGENTS.md projects/ui/README.md; then
+            echo "::error::Starter wording leaked into a generated document"
+            exit 1
+          fi

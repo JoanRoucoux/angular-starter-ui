@@ -1,13 +1,3 @@
-/*
- * Design tokens of the ui library — shipped with the package (dist/ui/styles/tokens.css).
- * This file must stay a pure token sheet: no resets, no element styles, so consumers
- * can import it without side effects.
- *
- * Tokens follow the shadcn/ui convention. Each token declares its light and dark value
- * with light-dark(); the active scheme follows the OS preference unless the host app
- * forces one by setting data-theme on <html>.
- */
-
 :root {
   color-scheme: light dark;
   --background: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
