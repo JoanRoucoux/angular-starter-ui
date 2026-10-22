@@ -116,6 +116,8 @@ Button and input attach to native elements (Material-style attribute selectors),
 - **Foundations**: MDX pages in [projects/ui/docs](projects/ui/docs) give the Overview landing page (installation, themes, contributing), the color tokens (light and dark swatches) and typography.
 - **Docs pages**: every component carries a description (what it is, when to use it, when not to, accessibility) and a description per control.
 
+Releases are made by tag with npm trusted publishing and Storybook is deployed to GitHub Pages: see the Release section of [AGENTS.md](AGENTS.md).
+
 ## Using the library in your app
 
 The publishable artifact is built from `projects/ui` into `dist/ui`. Before publishing, rename the package in [projects/ui/package.json](projects/ui/package.json) (e.g. `@your-scope/ui`) — the root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
