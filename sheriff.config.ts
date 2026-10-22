@@ -9,5 +9,7 @@ export const config: SheriffConfig = {
   depRules: {
     root: ['component:*'],
     'component:*': [],
+    'component:input': ['component:control'],
+    'component:field': ['component:input', 'component:control'],
   },
 };

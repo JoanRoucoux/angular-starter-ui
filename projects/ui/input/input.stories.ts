@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular-vite';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { UiInput } from './input';
+import { UiInput, UiTextarea } from './input';
 
 type InputArgs = {
   type: string;
@@ -11,7 +11,7 @@ type InputArgs = {
 
 const meta: Meta<InputArgs> = {
   title: 'Components/Input',
-  decorators: [moduleMetadata({ imports: [UiInput] })],
+  decorators: [moduleMetadata({ imports: [UiInput, UiTextarea] })],
   render: (args) => ({
     props: args,
     template: `<input uiInput [type]="type" [placeholder]="placeholder" [disabled]="disabled" aria-label="Example" />`,
@@ -35,6 +35,12 @@ export const Default: Story = {};
 
 export const Disabled: Story = {
   args: { disabled: true },
+};
+
+export const Textarea: Story = {
+  render: () => ({
+    template: `<textarea uiTextarea aria-label="Notes"></textarea>`,
+  }),
 };
 
 export const Invalid: Story = {
