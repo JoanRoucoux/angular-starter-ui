@@ -89,8 +89,8 @@ An application that does nothing inherits the operating system preference. An ap
   </tbody>
 </table>
 
-Leaving the attribute off is what makes `system` work, so a preference store must remove it rather than write an empty
-value or a third theme name.
+Leaving the attribute off, or empty, is what makes `system` work: neither matches the forcing selectors, so
+`color-scheme: light dark` lets the operating system decide. A preference store must not write a third theme name.
 
 See [Colors](?path=/docs/foundations-colors--docs) for every token this resolves.
 

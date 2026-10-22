@@ -24,9 +24,9 @@ pnpm start      # Storybook on http://localhost:6006
 
 ## Next steps
 
-- Grow your components in `projects/ui/<folder>/`: one folder per component, each its own entry point (`ng-package.json` + `index.ts`), imported as `{{projectName}}/<folder>` (`badge`, `button`, `input`, `textarea` and `field` are the reference implementations). `projects/ui/src/public-api.ts` exports nothing on purpose.
+- Grow your components in `projects/ui/<folder>/`: one folder per component, each its own entry point (`ng-package.json` + `index.ts`), imported as `{{projectName}}/<folder>` (`badge`, `button`, `input`, which also holds the textarea, and `field` are the reference implementations). `projects/ui/src/public-api.ts` exports nothing on purpose.
 - Make the design tokens yours in `projects/ui/styles/tokens.css`: components consume them through Tailwind arbitrary values and never hardcode colors. `.storybook/theme.ts` and `.storybook/preview-head.html` restate the same colors in hex, so edit them together.
-- The published package is named `{{projectName}}` ([projects/ui/package.json](projects/ui/package.json)); switch to a scope (e.g. `@your-scope/ui`) there if needed. Its version is managed in that file, independently of the root version.
+- The published package is named `{{projectName}}` ([projects/ui/package.json](projects/ui/package.json)); to rename it, change three places together: `name` in that file, the `paths` key in [tsconfig.json](tsconfig.json), and every quoted cross-entry import (`'{{projectName}}/...'` in specs and stories). Renaming only `package.json` breaks the build. Its version is managed in that file, independently of the root version.
 - One-time setting, GitHub Pages: in the repository settings, Pages, set the source to "GitHub Actions". Until then the deploy job of `storybook.yml` is red on every push to `main`.
 - One-time setting, npm trusted publisher: npm only accepts a trusted publisher on an existing package. Publish the first version once by hand with a token, then register `release.yml` as trusted publisher of the package on npmjs.com. Later releases are made by pushing a `vX.Y.Z` tag that matches `projects/ui/package.json` and `projects/ui/CHANGELOG.md`.
 

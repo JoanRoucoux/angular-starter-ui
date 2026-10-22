@@ -8,7 +8,7 @@ New design systems are scaffolded from this starter by [starter-generator](https
 
 Keep them in sync with the starter:
 
-- The demo components (`badge`, `button`, `input`, `textarea`, `field`) are kept in generated projects as reference implementations: do not add them to the manifest's `remove`.
+- The demo components (`badge`, `button`, `input` with its textarea, `field`, `control`) are kept in generated projects as reference implementations: do not add them to the manifest's `remove`.
 - The manifest patches both [package.json](../package.json) and [projects/ui/package.json](../projects/ui/package.json) (the published name); if the library layout moves, update the manifest paths.
 - The library name is `angular-starter-ui` in the starter. The manifest's `replaceAll` entries rewrite the quoted package path (`'angular-starter-ui/...` and `"angular-starter-ui/...`), `node_modules/angular-starter-ui` and `pnpm add angular-starter-ui` to `{{projectName}}`; `.storybook/main.ts` reads the name from `projects/ui/package.json`. A new unquoted mention of the name in a `.ts`, `.json`, `.md` or `.mdx` file survives generation: either anchor it with a quote or add an entry.
 - The AGENTS.md pointer line to this folder is removed by a `replace` entry with an empty value, so a generated AGENTS.md carries no starter content. Keep the two in sync.
