@@ -25,11 +25,12 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 
 ## Architecture
 
-- `projects/ui/src/lib/<component>/` — one folder per component: `<name>.ts` + `<name>.spec.ts` + `<name>.stories.ts` co-located, no `.component`/`.directive` suffixes.
-- `projects/ui/src/public-api.ts` — the library's **only** entry point (required by ng-packagr): every public symbol is exported there.
+- `projects/ui/<component>/` — one folder per component and one ng-packagr secondary entry point: `ng-package.json` (`{ "lib": { "entryFile": "index.ts" } }`), `index.ts` exporting the public symbols, `<name>.ts` + `<name>.spec.ts` + `<name>.stories.ts` co-located, no `.component`/`.directive` suffixes. Consumers import `<package>/<component>`.
+- `projects/ui/src/public-api.ts` — the root entry, `export {};` on purpose: it must never re-export an entry, since a root barrel puts every component in the consumer's initial chunk.
+- Cross-entry imports in code, specs and stories go through the package path (`<package>/<component>`, mapped by `tsconfig.json` `paths` and by a `viteFinal` alias in `.storybook/main.ts`), never `../<folder>/...`. Imports inside a folder stay relative. A symbol another entry needs is exported from its `index.ts`, so it becomes public.
 - `projects/ui/styles/tokens.css` — the design tokens, shipped as a package asset (`dist/ui/styles/tokens.css`). It must stay a **pure token sheet**: no resets, no element styles. Preview-only chrome belongs in `.storybook/preview.css`.
 - `projects/ui/docs/` — Storybook "Foundations" MDX pages (colors, typography).
-- Module boundaries are enforced at lint time by Sheriff ([sheriff.config.ts](sheriff.config.ts)): **components never import each other** — shared building blocks get their own module. Modules are barrel-less: no `index.ts`, import files directly; private files go in an `internal/` subdirectory (`public-api.ts` is the ng-packagr entry, not a barrel).
+- Module boundaries are enforced at lint time by Sheriff ([sheriff.config.ts](sheriff.config.ts)): **components never import each other unless `depRules` grants it** — shared building blocks get their own module. Each component folder is a Sheriff module whose `index.ts` is its barrel; private files go in an `internal/` subdirectory.
 
 ## Conventions
 

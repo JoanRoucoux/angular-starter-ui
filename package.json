@@ -93,6 +93,7 @@
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/user-event": "14.6.8",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
+    "@types/node": "26.6.5",
     "@vitest/coverage-v8": "5.0.5",
     "angular-eslint": "22.6.0",
     "concurrently": "10.0.6",

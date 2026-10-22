@@ -43,6 +43,19 @@
       }
     }
   ],
+  "replaceAll": [
+    {
+      "extensions": [".ts", ".json", ".mdx", ".md"],
+      "search": "'angular-starter-ui/",
+      "value": "'{{projectName}}/",
+      "optional": true
+    },
+    {
+      "extensions": [".ts", ".json", ".mdx", ".md"],
+      "search": "\"angular-starter-ui/",
+      "value": "\"{{projectName}}/"
+    }
+  ],
   "install": "pnpm install",
   "postInstall": ["pnpm run format"],
   "nextSteps": ["pnpm start"]
