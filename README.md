@@ -110,10 +110,11 @@ Button and input attach to native elements (Material-style attribute selectors),
 ## Storybook
 
 - **Autodocs**: every story is tagged `autodocs` globally ([.storybook/preview.ts](.storybook/preview.ts)); each component gets a generated docs page from its stories and `argTypes`.
-- **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story.
-- **Theming**: the toolbar switcher toggles `data-theme` on `<html>` via `withThemeByDataAttribute`, matching the tokens' `light-dark()` contract.
+- **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story, and a violation fails `test-storybook:ci`.
+- **Theming**: the toolbar switcher (system, light, dark) toggles `data-theme` on `<html>` via `withThemeByDataAttribute`, matching the tokens' `light-dark()` contract. The Storybook chrome and the Docs pages follow the OS preference with a theme built from the tokens ([.storybook/theme.ts](.storybook/theme.ts)).
 - **Interaction tests**: stories declare `play` functions (imports from `storybook/test`); the [test-runner](https://github.com/storybookjs/test-runner) executes every story in Chromium in CI (`pnpm run test-storybook:ci`).
-- **Foundations**: MDX pages in [projects/ui/docs](projects/ui/docs) document the color tokens (light and dark swatches) and typography.
+- **Foundations**: MDX pages in [projects/ui/docs](projects/ui/docs) give the Overview landing page (installation, themes, contributing), the color tokens (light and dark swatches) and typography.
+- **Docs pages**: every component carries a description (what it is, when to use it, when not to, accessibility) and a description per control.
 
 ## Using the library in your app
 

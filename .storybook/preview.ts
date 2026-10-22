@@ -1,24 +1,32 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/angular-vite';
+import { getPreferredColorScheme } from 'storybook/theming';
 
 import './preview.css';
+import { storybookTheme } from './theme';
 
 const preview: Preview = {
   decorators: [
-    // Matches the tokens' theming contract: light-dark() values resolve from the
-    // color-scheme forced by [data-theme] on <html> (see styles/tokens.css).
     withThemeByDataAttribute({
       themes: {
+        system: '',
         light: 'light',
         dark: 'dark',
       },
-      defaultTheme: 'light',
+      defaultTheme: 'system',
       attributeName: 'data-theme',
       parentSelector: 'html',
     }),
   ],
   parameters: {
     controls: { expanded: true },
+    a11y: { test: 'error' },
+    docs: { theme: storybookTheme(getPreferredColorScheme()) },
+    options: {
+      storySort: {
+        order: ['Foundations', ['Overview', 'Colors', 'Typography'], 'Inputs', 'Data display'],
+      },
+    },
   },
   tags: ['autodocs'],
 };
