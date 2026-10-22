@@ -10,7 +10,7 @@
 
 Ready-to-use Angular starter for building a design system: a publishable component library (standalone, zoneless, signals) and a Storybook workshop, with every best practice and tool already wired up.
 
-The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and three example components (button, input, badge) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and 100% unit test coverage.
+The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and example components (button, input, badge, textarea, field) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and 100% unit test coverage.
 
 ## Stack
 
@@ -57,21 +57,25 @@ Storybook is the development surface: components are built and reviewed through 
 ## Project structure
 
 ```txt
-.storybook/                  # Storybook config: main.ts, preview.ts (theme switcher), preview.css
+.storybook/                  # Storybook config: main.ts, preview.ts (theme switcher), theme.ts, preview.css
 projects/ui/
-├── ng-package.json          # ng-packagr config (entry point, shipped assets)
-├── package.json             # Library manifest (rename before publishing)
-├── styles/
-│   └── tokens.css           # Design tokens — shipped as dist/ui/styles/tokens.css
-├── docs/                    # Storybook "Foundations" MDX pages (colors, typography)
-├── button/                  # One entry point per component: ng-package.json, index.ts,
-├── input/                   # button.ts + button.spec.ts + button.stories.ts
-├── badge/
-└── src/
-    └── public-api.ts        # Exports nothing on purpose
+|-- ng-package.json          # ng-packagr config (root entry, shipped assets)
+|-- package.json             # Library manifest (rename before publishing)
+|-- CHANGELOG.md             # One `## X.Y.Z` section per release, shipped in the package
+|-- README.md                # npm page of the published package
+|-- styles/
+|   `-- tokens.css           # Design tokens, shipped as dist/ui/styles/tokens.css
+|-- docs/                    # Storybook "Foundations" MDX pages (overview, colors, typography)
+|-- button/                  # One entry point per component: ng-package.json, index.ts,
+|-- input/                   # button.ts + button.spec.ts + button.stories.ts
+|-- badge/
+|-- control/                 # UI_CONTROL token shared by input and field
+|-- field/                   # ui-field: label, hint and error around a control
+`-- src/
+    `-- public-api.ts        # Exports nothing on purpose
 ```
 
-Each component lives in its own folder with its spec and stories co-located. Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): components cannot import each other — shared building blocks get their own module. Modules are barrel-less: import files directly (no `index.ts`), and place files a module wants to keep private in an `internal/` subdirectory. Each folder is its own entry point (`ng-package.json` + `index.ts`) so a consumer pulls in only the components it imports; `public-api.ts` exports nothing and must never re-export an entry.
+Each component lives in its own folder with its spec and stories co-located. Dependency rules, enforced at lint time by [Sheriff](https://sheriff.softarc.io) ([sheriff.config.ts](sheriff.config.ts)): components cannot import each other unless `depRules` grants it, and shared building blocks get their own module. Each folder is a module whose `index.ts` is its barrel, and files a module wants to keep private go in an `internal/` subdirectory. Each folder is also its own entry point (`ng-package.json` + `index.ts`) so a consumer pulls in only the components it imports; `public-api.ts` exports nothing and must never re-export an entry.
 
 ## Design tokens and theming
 
@@ -80,24 +84,22 @@ All colors come from [projects/ui/styles/tokens.css](projects/ui/styles/tokens.c
 Each token declares its light and dark value with `light-dark()`; the active scheme follows the OS preference unless the host forces one:
 
 ```html
-<html data-theme="dark">
-  <!-- forces dark, whatever the OS says -->
-</html>
+<html data-theme="dark"></html>
 ```
 
 The Storybook toolbar theme switcher does exactly that, so every story can be reviewed in both themes. Components consume tokens through Tailwind arbitrary-value utilities (`bg-(--primary)`, `border-(--border)`, ...): retheming means editing one CSS file. The tokens are documented in Storybook under **Foundations**.
 
 ## Components
 
-Three example components demonstrate the conventions (prefix `ui`, signal inputs, host class bindings):
+Five example components demonstrate the conventions (prefix `ui`, signal inputs, host class bindings):
 
-| Component | Selector               | API                                                                              |
-| --------- | ---------------------- | -------------------------------------------------------------------------------- |
-| Button    | `button[ui-button]`    | `variant`: primary \| secondary \| destructive \| ghost — `size`: sm \| md \| lg |
-| Input     | `input[uiInput]`       | Styled native input: works with any forms API without plumbing                   |
-| Badge     | `ui-badge`             | `variant`: primary \| secondary \| destructive \| outline                        |
-| Textarea  | `textarea[uiTextarea]` | Styled native textarea, same contract as the input                               |
-| Field     | `ui-field`             | `label`, `labelHidden`, `hint`, `error`: wires the projected input or textarea   |
+| Component | Selector               | API                                                                             |
+| --------- | ---------------------- | ------------------------------------------------------------------------------- |
+| Button    | `button[ui-button]`    | `variant`: primary \| secondary \| destructive \| ghost, `size`: sm \| md \| lg |
+| Input     | `input[uiInput]`       | Styled native input: works with any forms API without plumbing                  |
+| Badge     | `ui-badge`             | `variant`: primary \| secondary \| destructive \| outline                       |
+| Textarea  | `textarea[uiTextarea]` | Styled native textarea, same contract as the input                              |
+| Field     | `ui-field`             | `label`, `labelHidden`, `hint`, `error`: wires the projected input or textarea  |
 
 Button and input attach to native elements (Material-style attribute selectors), keeping native semantics, accessibility and forms compatibility for free:
 
@@ -120,7 +122,7 @@ Releases are made by tag with npm trusted publishing and Storybook is deployed t
 
 ## Using the library in your app
 
-The publishable artifact is built from `projects/ui` into `dist/ui`. Before publishing, rename the package in [projects/ui/package.json](projects/ui/package.json) (e.g. `@your-scope/ui`) — the root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
+The publishable artifact is built from `projects/ui` into `dist/ui`. Before publishing, rename the package in [projects/ui/package.json](projects/ui/package.json) (e.g. `@your-scope/ui`). The root `package.json` version is the starter's own version (managed by release-please), the library version is managed in `projects/ui/package.json`.
 
 In the consuming app:
 
@@ -134,7 +136,7 @@ In the consuming app:
    @import 'tailwindcss';
    @source '../node_modules/@your-scope/ui';
    ```
-   Non-Tailwind consumers only need the tokens import: component class names would then need to be covered by your own CSS strategy — in that case prefer forking the components into your design system, which is what a starter is for.
+   Non-Tailwind consumers only need the tokens import: component class names would then need to be covered by your own CSS strategy; in that case prefer forking the components into your design system, which is what a starter is for.
 
 The library exports each component's own types so you never recreate them. Every variant/size union comes with a matching `as const` tuple (the single source of truth the type is derived from), so you get both the type and the runtime list:
 
@@ -155,8 +157,8 @@ Exported today: `ButtonVariant` / `BUTTON_VARIANTS`, `ButtonSize` / `BUTTON_SIZE
 ## Testing
 
 - **Unit tests** use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free. The [jest-dom](https://github.com/testing-library/jest-dom) matchers are registered in [projects/ui/src/test-setup.ts](projects/ui/src/test-setup.ts).
-- **Coverage** is at 100% and must stay there; the CI thresholds (85/80/70/85 in [angular.json](angular.json)) are intentionally lower so downstream users of the starter are not blocked. Stories are excluded from coverage.
-- **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser via the Storybook test-runner — the Vitest addon is not used because it does not support Angular.
+- **Coverage** is at 100% and must stay there; the CI thresholds (85/80/70/85 in [angular.json](angular.json)) are a floor. Stories are excluded from coverage.
+- **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser via the Storybook test-runner. The Vitest addon is not used because it does not support Angular.
 
 ## Quality and conventions
 

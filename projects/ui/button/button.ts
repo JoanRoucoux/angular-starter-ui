@@ -1,10 +1,8 @@
 import { Component, computed, input } from '@angular/core';
 
-/** Available button variants. `ButtonVariant` is derived from this tuple. */
 export const BUTTON_VARIANTS = ['primary', 'secondary', 'destructive', 'ghost'] as const;
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
 
-/** Available button sizes. `ButtonSize` is derived from this tuple. */
 export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const;
 export type ButtonSize = (typeof BUTTON_SIZES)[number];
 
@@ -24,13 +22,6 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
   lg: 'h-10 px-6 text-base',
 };
 
-/**
- * Styled native button or anchor. Applied as an attribute so the host keeps every native
- * button behavior (type, disabled, form submission, accessibility) for free.
- *
- * @example
- * <button ui-button variant="destructive" size="sm">Delete</button>
- */
 @Component({
   selector: 'button[ui-button], a[ui-button]',
   template: '<ng-content />',

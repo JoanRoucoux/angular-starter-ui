@@ -1,16 +1,12 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Compiled output
 /dist
 /tmp
 /out-tsc
 /bazel-out
 
-# Node
 /node_modules
 pnpm-debug.log
 
-# IDEs and editors
 .idea/
 .project
 .classpath
@@ -19,19 +15,15 @@ pnpm-debug.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-!.vscode/mcp.json
 .history/*
 
-# Storybook
 /storybook-static
 
-# Miscellaneous
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -41,9 +33,7 @@ testem.log
 /typings
 __screenshots__/
 
-# System files
 .DS_Store
 Thumbs.db
 
-# Local AI agent settings
 .claude/settings.local.json

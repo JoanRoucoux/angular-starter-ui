@@ -33,7 +33,6 @@
   "scripts": {
     "ng": "ng",
     "start": "storybook dev -p 6006",
-    "storybook": "storybook dev -p 6006",
     "build": "ng build",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
@@ -72,7 +71,6 @@
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "2.9.1",
-    "@angular/animations": "22.2.3",
     "@angular/build": "22.2.3",
     "@angular/cli": "22.2.3",
     "@angular/compiler-cli": "22.2.3",

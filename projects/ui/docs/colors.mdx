@@ -11,7 +11,7 @@ Every token declares both of its values with `light-dark()`: the active scheme f
 host application forces one by setting `data-theme="light"` or `data-theme="dark"` on `<html>` (that is exactly what
 the theme switcher in the Storybook toolbar does).
 
-Components never hardcode colors — they consume the tokens through Tailwind arbitrary-value utilities such as
+Components never hardcode colors: they consume the tokens through Tailwind arbitrary-value utilities such as
 `bg-(--primary)` or `border-(--border)`, so retheming the whole system means editing one CSS file.
 
 export const tokens = [

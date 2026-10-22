@@ -1,6 +1,5 @@
 import { Component, computed, input } from '@angular/core';
 
-/** Available badge variants. `BadgeVariant` is derived from this tuple. */
 export const BADGE_VARIANTS = ['primary', 'secondary', 'destructive', 'outline'] as const;
 export type BadgeVariant = (typeof BADGE_VARIANTS)[number];
 
@@ -13,12 +12,6 @@ const VARIANT_CLASSES: Record<BadgeVariant, string> = {
   outline: 'border border-(--border) text-(--foreground)',
 };
 
-/**
- * Small status descriptor for counts, states or labels.
- *
- * @example
- * <ui-badge variant="secondary">Draft</ui-badge>
- */
 @Component({
   selector: 'ui-badge',
   template: '<ng-content />',
