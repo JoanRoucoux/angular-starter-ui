@@ -53,6 +53,7 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - Styling is Tailwind-in-template: arbitrary-value utilities consuming the tokens (`bg-(--primary)`, `border-(--border)`). Components never hardcode colors, and never glue a class token to an interpolation (`h-${size}`): a consumer's Tailwind scanner cannot see it, and `projects/ui/src/class-literals.spec.ts` fails on it.
 - `verbatimModuleSyntax` is enabled: type-only imports must use `import type { X }` or `import { type X }`.
 - `console` is forbidden everywhere (ESLint).
+- Dependabot runs monthly with a 7-day cooldown. Minor and patch updates merge themselves through `.github/workflows/dependabot-auto-merge.yml` once the required checks pass, and majors are reviewed by hand. The README names major versions only, since the exact ones live in the manifests Dependabot bumps.
 
 ## Storybook
 
@@ -89,5 +90,6 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - `field`, `input` and `control` are the reference for a component that depends on other entries: `ui-field` finds the projected control through the `UI_CONTROL` token (provided by `UiInput` and `UiTextarea`, which declare the `errors` and `touched` inputs that Angular's `[formField]` fills) and imports it by package path; Sheriff `depRules` grant `field` -> `input`, `control` and `input` -> `control`.
 - `field.ts` keeps one `eslint-disable-next-line @angular-eslint/template/label-has-associated-control`: the label's `for` is wired at runtime, once the projected control's id is known.
 - Dark `--destructive` is a light red (`hsl(0 62.8% 60%)`) so it passes 4.5:1 as text on the dark background, which forces the dark `--destructive-foreground` to the dark background color: no single light foreground passes on that red.
+- A merge made with `GITHUB_TOKEN` triggers no `push` workflow, which is why `dependabot-auto-merge.yml` uses the `DEPENDABOT_MERGE_TOKEN` secret when it exists.
 
 Starter maintenance notes (generator manifest, templates, starter-only workflows) live in [.generator/README.md](.generator/README.md).
