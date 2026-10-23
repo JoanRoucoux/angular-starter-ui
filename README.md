@@ -1,21 +1,33 @@
 <img src=".github/assets/banner.png" alt="Angular Starter UI: ready-to-use Angular design system starter" />
 
 [![CI](https://github.com/JoanRoucoux/angular-starter-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/JoanRoucoux/angular-starter-ui/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/JoanRoucoux/angular-starter-ui)](https://github.com/JoanRoucoux/angular-starter-ui/releases)
 [![Angular](https://img.shields.io/badge/Angular-22-dd0031?logo=angular)](https://angular.dev)
 [![Storybook](https://img.shields.io/badge/Storybook-10-ff4785?logo=storybook&logoColor=white)](https://storybook.js.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![pnpm](https://img.shields.io/badge/pnpm-managed-f69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 
 Ready-to-use Angular starter for building a design system: a publishable component library (standalone, zoneless, signals) and a Storybook workshop, with every best practice and tool already wired up.
 
 The starter ships a documented set of design tokens (neutral zinc scale, light and dark via `light-dark()`) and example components (button, input, badge, textarea, field) showing the conventions: signal inputs, host class bindings, Tailwind utilities consuming the tokens, stories with interaction tests, and unit tests with enforced coverage thresholds.
 
-## Stack
+It is the design system counterpart of [angular-starter-web](https://github.com/JoanRoucoux/angular-starter-web), which leaves the choice of UI library open.
+
+## The starters
+
+| Repository                                                                         | What it generates                                         |
+| ---------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [angular-starter-web](https://github.com/JoanRoucoux/angular-starter-web)          | An Angular web application connected to a backend         |
+| [angular-starter-ui](https://github.com/JoanRoucoux/angular-starter-ui) (this one) | An Angular design system: component library and Storybook |
+| [java-starter](https://github.com/JoanRoucoux/java-starter)                        | A Spring Boot backend in hexagonal architecture           |
+
+Create an application from any of them with [starter-generator](https://github.com/JoanRoucoux/starter-generator).
+
+## Tech stack
 
 | Tool                                                                                                                                                                                   | Role                                                     |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [Angular 22](https://angular.dev) + [ng-packagr](https://github.com/ng-packagr/ng-packagr)                                                                                             | Framework and library build (Angular Package Format)     |
-| [Storybook 10](https://storybook.js.org) (`@storybook/angular-vite`)                                                                                                                   | Component workshop: autodocs, a11y addon, theme switcher |
+| [Angular](https://angular.dev) + [ng-packagr](https://github.com/ng-packagr/ng-packagr)                                                                                                | Framework and library build (Angular Package Format)     |
+| [Storybook](https://storybook.js.org) (`@storybook/angular-vite`)                                                                                                                      | Component workshop: autodocs, a11y addon, theme switcher |
 | [Tailwind CSS](https://tailwindcss.com)                                                                                                                                                | Utility-first CSS consuming the design tokens            |
 | [ESLint](https://eslint.org) + [angular-eslint](https://github.com/angular-eslint/angular-eslint) + [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook)  | Lint for TypeScript code, templates and stories          |
 | [Prettier](https://prettier.io) + [sort-imports](https://github.com/trivago/prettier-plugin-sort-imports) + [tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) | Code formatting, import ordering and class sorting       |
@@ -28,6 +40,14 @@ The starter ships a documented set of design tokens (neutral zinc scale, light a
 
 ## Getting started
 
+Generate a design system from this starter:
+
+```bash
+starter-generator portfolio-ui --starter ui
+```
+
+Then run it. Prerequisites: Node (supported versions in `engines` of [package.json](package.json)) and pnpm.
+
 ```bash
 pnpm install    # installs dependencies
 pnpm start      # Storybook on http://localhost:6006
@@ -35,7 +55,7 @@ pnpm start      # Storybook on http://localhost:6006
 
 Storybook is the development surface: components are built and reviewed through their stories, there is no demo application.
 
-## Scripts
+### Scripts
 
 | Script                       | Description                                                        |
 | ---------------------------- | ------------------------------------------------------------------ |
