@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/JoanRoucoux/angular-starter-ui/compare/v2.0.1...v2.0.2) (2026-10-24)
+
+
+### Bug Fixes
+
+* **a11y:** announce field errors once ([#64](https://github.com/JoanRoucoux/angular-starter-ui/issues/64)) ([8012991](https://github.com/JoanRoucoux/angular-starter-ui/commit/8012991a14b95c14a347c987802786daee916728))
+
 ## [2.0.1](https://github.com/JoanRoucoux/angular-starter-ui/compare/v2.0.0...v2.0.1) (2026-10-24)
 
 
