@@ -10,18 +10,18 @@ Package manager: **pnpm** (version pinned in the `packageManager` field of packa
 
 ## Commands
 
-| Command                      | Purpose                                                                                                 |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `pnpm install`               | Install deps                                                                                            |
-| `pnpm start`                 | Storybook dev server (http://localhost:6006)                                                            |
-| `pnpm run test:coverage`     | Unit tests with coverage                                                                                |
-| `pnpm run build`             | Library build (ng-packagr -> `dist/ui`)                                                                 |
-| `pnpm run build-storybook`   | Static Storybook build (-> `storybook-static/`)                                                         |
-| `pnpm run test-storybook:ci` | Interaction tests against the built Storybook (needs Chromium: `pnpm exec playwright install chromium`) |
-| `pnpm run lint`              | ESLint (includes Sheriff module-boundary rules)                                                         |
-| `pnpm run format:check`      | Prettier check                                                                                          |
+| Command                    | Purpose                                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm install`             | Install deps                                                                                                                                        |
+| `pnpm start`               | Storybook dev server (http://localhost:6006)                                                                                                        |
+| `pnpm run test:coverage`   | Unit tests with coverage                                                                                                                            |
+| `pnpm run build`           | Library build (ng-packagr -> `dist/ui`)                                                                                                             |
+| `pnpm run build-storybook` | Static Storybook build (-> `storybook-static/`)                                                                                                     |
+| `pnpm run test:storybook`  | Story tests (play functions and axe) in Chromium through the Vitest addon, light and dark (needs Chromium: `pnpm exec playwright install chromium`) |
+| `pnpm run lint`            | ESLint (includes Sheriff module-boundary rules)                                                                                                     |
+| `pnpm run format:check`    | Prettier check                                                                                                                                      |
 
-Before considering a change done, run the same pipeline as CI: `format:check`, `lint`, `test:coverage`, `build`, `build-storybook`, `test-storybook:ci`.
+Before considering a change done, run the same pipeline as CI: `format:check`, `lint`, `test:coverage`, `build`, `build-storybook`, `test:storybook`.
 
 ## Architecture
 
@@ -63,10 +63,10 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - The theme switcher is `withThemeByDataAttribute` toggling `data-theme` on `<html>` with `system` (empty attribute, default), `light` and `dark`; tokens resolve via `light-dark()`, and an empty `data-theme` lets `color-scheme: light dark` follow the OS. Never bypass it with story-level colors.
 - Story titles are grouped by purpose (`Inputs/...`, `Data display/...`), and `storySort` in `.storybook/preview.ts` pins `Foundations` first with `Overview` as the landing page. Extend the `order` list when a group appears.
 - Compodoc is off, so every story meta carries `parameters.docs.description.component` (one sentence on what the component is, then `#### When to use`, `#### When not to use`, `#### Accessibility`) and every `argType` a `description`. Use neutral vocabulary (save, delete, draft, email).
-- `parameters.a11y.test` is `'error'`: an axe violation fails `test-storybook:ci`. Every story needs an accessible name for its controls.
+- `parameters.a11y.test` is `'error'`: an axe violation fails `test:storybook`. Every story needs an accessible name for its controls.
 - The Storybook chrome (`.storybook/manager.ts`) and the Docs pages (`parameters.docs.theme` in `preview.ts`) take their theme from `.storybook/theme.ts` for the OS preference. The two halves agree on purpose; do not try to make the chrome follow the toolbar (neither `setConfig` nor `api.setOptions` re-themes a running manager, and a Docs page never re-renders on a globals change). A manager globals listener is `addons.register('id', (api) => api.on('updateGlobals', ...))`.
 - `theme.ts` restates the token colors in hex: editing a color in `tokens.css` means editing its twin in `theme.ts`, and in the inline style of `.storybook/preview-head.html`, which prevents a white flash on preview reload because `preview.css` arrives with the JS bundle.
-- Interaction tests are `play` functions, executed in CI by `@storybook/test-runner` against the built Storybook. The Storybook **Vitest addon is not an option**: it does not support Angular.
+- Interaction tests are `play` functions, run by `@storybook/addon-vitest` in Vitest browser mode (Chromium through Playwright, `.storybook/vitest.config.mts`) on the stories sources, with no built Storybook needed. Every story tagged `test` (the default) is one test, and an axe violation fails it (`a11y.test: 'error'`). Two Vitest projects run every story: `storybook` (`.storybook/vitest.setup.ts`) and `storybook-dark` (`.storybook/vitest.setup.dark.ts`, which reuses the first and sets the `theme` global to `dark`). A `play` that needs a real browser and no place in the sidebar lives in a story tagged `['!dev', '!autodocs']`, still run by the addon. `projects/ui/**/*.stories.ts` stays out of `ng test`, which only runs specs.
 - Foundations MDX pages live in `projects/ui/docs/` and use `Meta` from `@storybook/addon-docs/blocks`.
 
 ## Testing
@@ -74,13 +74,14 @@ Before considering a change done, run the same pipeline as CI: `format:check`, `
 - Component tests use Angular Testing Library (`render`, `screen`, `userEvent`) with template-string rendering (`render('<button ui-button>...</button>', { imports: [UiButton] })`): query by role or label, not by CSS selectors. jest-dom matchers are set up in `projects/ui/src/test-setup.ts`.
 - Cover every variant/size branch of the class-record maps: that is what keeps coverage at its current level.
 - Coverage is 100% on branches and lines, 97.27% on statements and 93.33% on functions: the only gap is the query function that `contentChild` compiles to in `field.ts`, which coverage reports as never called. The CI thresholds in `angular.json` (statements 85, branches 80, functions 70, lines 85) are a floor; do not raise them. `*.stories.ts` files are excluded from coverage (`coverageExclude` in `angular.json`).
+- `.storybook/vitest.setup.ts` calls `setProjectAnnotations` itself, so the Vitest addon skips its automatic provisioning: an addon with preview annotations added to `.storybook/main.ts` must also join `storyAnnotations`. Under Vitest the preview layout is not applied, hence the `layoutAnnotations` that restore the 1rem body padding of `layout: 'padded'`. The dark setup calls `setProjectAnnotations` again with the same list plus `initialGlobals`, which replaces the first call.
 
 ## Gotchas
 
 - TypeScript stays on 6.x (Dependabot ignores `>=7`): TypeScript 7 breaks `typescript-eslint` (via `ts-api-utils`). Do not bump until typescript-eslint supports TS 7. This is also why the Storybook framework is `@storybook/angular-vite`: the webpack `@storybook/angular` peer range only allows TS up to 5.
 - `pnpm-workspace.yaml` `allowBuilds` is required for native postinstall scripts (esbuild, ...): do not remove it.
 - pnpm 11 holds back versions younger than its `minimumReleaseAge`: a bump that needs a fresh version gets a temporary `minimumReleaseAgeExclude` entry in `pnpm-workspace.yaml`, removed once the version has aged.
-- `pnpm-workspace.yaml` overrides `playwright` and `playwright-core` to `$@playwright/test`: `@storybook/test-runner` brings its own Playwright, and CI installed the browser with one version and launched it with the other, which broke every Dependabot bump that moved only one. pnpm deprecates the `$` reference in favour of catalogs, but Dependabot does not update catalog entries, so the override stays.
+- `playwright` comes from the `catalog` of `pnpm-workspace.yaml`, so `playwright install` and the Vitest browser provider use one version. Dependabot does not update catalog entries: bump it by hand along with `@vitest/browser-playwright`.
 - GitHub Actions in `.github/workflows/` are pinned by commit SHA with a `# vX.Y.Z` comment (Dependabot keeps them updated): when adding one, pin it the same way.
 - The required status check `ci` is the gate job of `ci.yml`, which needs `static`, `unit` and `storybook` and fails unless each result is `success` or `skipped` (`if: always()`, never `!cancelled()`, so a cancelled run turns the gate red). A new CI job must join its `needs`.
 - Dependabot groups every npm update in one pull request and every action update in another, because the Storybook, Vite and Playwright families are coupled.

@@ -17,7 +17,7 @@ Thanks for your interest in this project!
    pnpm run lint
    pnpm run format:check
    pnpm test
-   pnpm run build-storybook && pnpm run test-storybook:ci
+   pnpm run test:storybook
    ```
 4. Commit using a [Conventional Commits](https://www.conventionalcommits.org) message (`feat: ...`, `fix: ...`, `chore: ...`), automatically validated by commitlint.
 5. Open a Pull Request filling in the provided template.

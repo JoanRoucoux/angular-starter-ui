@@ -18,7 +18,7 @@ pnpm start      # Storybook on http://localhost:6006
 | `pnpm run build-storybook`   | Static Storybook build (-> `storybook-static/`)            |
 | `pnpm test`                  | Unit tests (Vitest)                                        |
 | `pnpm run test:coverage`     | Unit tests with coverage report and thresholds             |
-| `pnpm run test-storybook:ci` | Storybook interaction tests against the built Storybook    |
+| `pnpm run test:storybook`    | Story tests (play functions and axe) in Chromium           |
 | `pnpm run lint`              | Lint (ESLint, includes Sheriff module boundaries)          |
 | `pnpm run format`            | Format the whole project (Prettier)                        |
 

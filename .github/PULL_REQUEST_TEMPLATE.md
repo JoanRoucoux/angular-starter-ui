@@ -14,7 +14,7 @@ Briefly describe the changes and their motivation.
 
 - [ ] Code follows the project's conventions (lint, format)
 - [ ] Unit tests pass (`pnpm test`)
-- [ ] Storybook interaction tests pass if relevant (`pnpm run test-storybook`)
+- [ ] Storybook interaction tests pass if relevant (`pnpm run test:storybook`)
 - [ ] Documentation has been updated if needed
 - [ ] Commit messages follow [Conventional Commits](https://www.conventionalcommits.org)
 
