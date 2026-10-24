@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/JoanRoucoux/angular-starter-ui/compare/v2.0.0...v2.0.1) (2026-10-24)
+
+
+### Bug Fixes
+
+* **a11y:** input border, required fields and forced colors ([#61](https://github.com/JoanRoucoux/angular-starter-ui/issues/61)) ([618b6ea](https://github.com/JoanRoucoux/angular-starter-ui/commit/618b6ea315eb381a70d5aa8ad3e4e7294ad64ba1))
+
 ## [2.0.0](https://github.com/JoanRoucoux/angular-starter-ui/compare/v1.2.1...v2.0.0) (2026-10-22)
 
 
