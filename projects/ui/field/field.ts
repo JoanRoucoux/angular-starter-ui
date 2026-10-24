@@ -6,9 +6,11 @@ import {
   booleanAttribute,
   computed,
   contentChild,
+  effect,
   inject,
   input,
   signal,
+  untracked,
 } from '@angular/core';
 
 import { UI_CONTROL } from 'angular-starter-ui/control';
@@ -38,8 +40,10 @@ const nextId = (() => {
       }
 
       @if (message()) {
-        <p class="text-xs font-medium text-(--destructive)" role="alert" [id]="errorId">{{ message() }}</p>
+        <p class="text-xs font-medium text-(--destructive)" [id]="errorId">{{ message() }}</p>
       }
+
+      <span aria-live="polite" class="sr-only">{{ announcement() }}</span>
     </div>
   `,
 })
@@ -57,6 +61,7 @@ export class UiField {
   readonly #destroyRef = inject(DestroyRef);
   protected readonly required = signal(false);
   protected readonly control = contentChild(UI_CONTROL);
+  protected readonly announcement = signal('');
 
   protected readonly labelClasses = computed(() =>
     this.labelHidden() ? 'sr-only' : 'text-sm font-medium text-(--foreground)',
@@ -79,6 +84,26 @@ export class UiField {
   });
 
   constructor() {
+    let wasTouched = false;
+    let announcedExplicit: string | undefined;
+
+    effect(() => {
+      const message = this.message();
+      const explicit = this.error() || undefined;
+      const touched = this.control()?.touched() ?? false;
+      const turnedTouched = touched && !wasTouched;
+      const explicitChanged = explicit !== undefined && explicit !== announcedExplicit;
+
+      wasTouched = touched;
+      announcedExplicit = explicit;
+
+      if (message && (explicitChanged || (!explicit && turnedTouched))) {
+        this.announcement.set(message);
+      } else if (message !== untracked(this.announcement)) {
+        this.announcement.set('');
+      }
+    });
+
     let markedByField = false;
     let ownDescribedBy: string | null | undefined;
     let observed: HTMLElement | undefined;
