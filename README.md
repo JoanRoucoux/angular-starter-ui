@@ -24,19 +24,19 @@ Create an application from any of them with [starter-generator](https://github.c
 
 ## Tech stack
 
-| Tool                                                                                                                                                                                   | Role                                                     |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [Angular](https://angular.dev) + [ng-packagr](https://github.com/ng-packagr/ng-packagr)                                                                                                | Framework and library build (Angular Package Format)     |
-| [Storybook](https://storybook.js.org) (`@storybook/angular-vite`)                                                                                                                      | Component workshop: autodocs, a11y addon, theme switcher |
-| [Tailwind CSS](https://tailwindcss.com)                                                                                                                                                | Utility-first CSS consuming the design tokens            |
-| [ESLint](https://eslint.org) + [angular-eslint](https://github.com/angular-eslint/angular-eslint) + [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook)  | Lint for TypeScript code, templates and stories          |
-| [Prettier](https://prettier.io) + [sort-imports](https://github.com/trivago/prettier-plugin-sort-imports) + [tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) | Code formatting, import ordering and class sorting       |
-| [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com/docs/angular-testing-library/intro)                                                                       | Unit tests (Angular's default runner)                    |
-| [Storybook test-runner](https://github.com/storybookjs/test-runner)                                                                                                                    | Runs every story and its `play` interaction tests in CI  |
-| [Sheriff](https://sheriff.softarc.io)                                                                                                                                                  | Enforces module boundaries (components stay isolated)    |
-| [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)                                                                                  | Git hooks (format + lint on commit)                      |
-| [commitlint](https://commitlint.js.org)                                                                                                                                                | Commit message validation (Conventional Commits)         |
-| [GitHub Actions](https://github.com/features/actions)                                                                                                                                  | CI: format, lint, unit tests, builds, interaction tests  |
+| Tool                                                                                                                                                                                   | Role                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [Angular](https://angular.dev) + [ng-packagr](https://github.com/ng-packagr/ng-packagr)                                                                                                | Framework and library build (Angular Package Format)      |
+| [Storybook](https://storybook.js.org) (`@storybook/angular-vite`)                                                                                                                      | Component workshop: autodocs, a11y addon, theme switcher  |
+| [Tailwind CSS](https://tailwindcss.com)                                                                                                                                                | Utility-first CSS consuming the design tokens             |
+| [ESLint](https://eslint.org) + [angular-eslint](https://github.com/angular-eslint/angular-eslint) + [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook)  | Lint for TypeScript code, templates and stories           |
+| [Prettier](https://prettier.io) + [sort-imports](https://github.com/trivago/prettier-plugin-sort-imports) + [tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) | Code formatting, import ordering and class sorting        |
+| [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com/docs/angular-testing-library/intro)                                                                       | Unit tests (Angular's default runner)                     |
+| [Storybook Vitest addon](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon)                                                                                        | Runs every story, its `play` function and axe in Chromium |
+| [Sheriff](https://sheriff.softarc.io)                                                                                                                                                  | Enforces module boundaries (components stay isolated)     |
+| [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)                                                                                  | Git hooks (format + lint on commit)                       |
+| [commitlint](https://commitlint.js.org)                                                                                                                                                | Commit message validation (Conventional Commits)          |
+| [GitHub Actions](https://github.com/features/actions)                                                                                                                                  | CI: format, lint, unit tests, builds, interaction tests   |
 
 ## Getting started
 
@@ -57,20 +57,19 @@ Storybook is the development surface: components are built and reviewed through 
 
 ### Scripts
 
-| Script                       | Description                                                        |
-| ---------------------------- | ------------------------------------------------------------------ |
-| `pnpm start`                 | Storybook dev server on `http://localhost:6006`                    |
-| `pnpm run build`             | Builds the library into `dist/ui` (Angular Package Format)         |
-| `pnpm run build:dev`         | Development build of the library                                   |
-| `pnpm run build-storybook`   | Builds the static Storybook into `storybook-static/`               |
-| `pnpm test`                  | Unit tests (Vitest)                                                |
-| `pnpm run test:coverage`     | Unit tests with coverage report and thresholds                     |
-| `pnpm run test-storybook`    | Interaction tests against a running Storybook (`pnpm start` first) |
-| `pnpm run test-storybook:ci` | Serves `storybook-static/` and runs the interaction tests on it    |
-| `pnpm run lint`              | Lint (ESLint)                                                      |
-| `pnpm run lint:fix`          | Lint with automatic fixes                                          |
-| `pnpm run format`            | Format the whole project (Prettier)                                |
-| `pnpm run format:check`      | Check formatting without modifying anything                        |
+| Script                     | Description                                                      |
+| -------------------------- | ---------------------------------------------------------------- |
+| `pnpm start`               | Storybook dev server on `http://localhost:6006`                  |
+| `pnpm run build`           | Builds the library into `dist/ui` (Angular Package Format)       |
+| `pnpm run build:dev`       | Development build of the library                                 |
+| `pnpm run build-storybook` | Builds the static Storybook into `storybook-static/`             |
+| `pnpm test`                | Unit tests (Vitest)                                              |
+| `pnpm run test:coverage`   | Unit tests with coverage report and thresholds                   |
+| `pnpm run test:storybook`  | Story tests (play functions and axe) in Chromium, light and dark |
+| `pnpm run lint`            | Lint (ESLint)                                                    |
+| `pnpm run lint:fix`        | Lint with automatic fixes                                        |
+| `pnpm run format`          | Format the whole project (Prettier)                              |
+| `pnpm run format:check`    | Check formatting without modifying anything                      |
 
 ## Project structure
 
@@ -132,9 +131,9 @@ Button and input attach to native elements (Material-style attribute selectors),
 The live Storybook is at https://joanroucoux.github.io/angular-starter-ui/.
 
 - **Autodocs**: every story is tagged `autodocs` globally ([.storybook/preview.ts](.storybook/preview.ts)); each component gets a generated docs page from its stories and `argTypes`.
-- **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story, and a violation fails `test-storybook:ci`.
+- **Accessibility**: the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) runs axe checks on every story, and a violation fails `test:storybook`.
 - **Theming**: the toolbar switcher (system, light, dark) toggles `data-theme` on `<html>` via `withThemeByDataAttribute`, matching the tokens' `light-dark()` contract. The Storybook chrome and the Docs pages follow the OS preference with a theme built from the tokens ([.storybook/theme.ts](.storybook/theme.ts)).
-- **Interaction tests**: stories declare `play` functions (imports from `storybook/test`); the [test-runner](https://github.com/storybookjs/test-runner) executes every story in Chromium in CI (`pnpm run test-storybook:ci`).
+- **Interaction tests**: stories declare `play` functions (imports from `storybook/test`); the [Vitest addon](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon) runs every story in Chromium, once in light and once in dark, in CI (`pnpm run test:storybook`).
 - **Foundations**: MDX pages in [projects/ui/docs](projects/ui/docs) give the Overview landing page (installation, themes, contributing), the color tokens (light and dark swatches) and typography.
 - **Docs pages**: every component carries a description (what it is, when to use it, when not to, accessibility) and a description per control.
 
@@ -178,7 +177,7 @@ Exported today: `ButtonVariant` / `BUTTON_VARIANTS`, `ButtonSize` / `BUTTON_SIZE
 
 - **Unit tests** use [Angular Testing Library](https://testing-library.com/docs/angular-testing-library/intro) (`render`, `screen`, `userEvent`): querying by role or label asserts accessibility for free. The [jest-dom](https://github.com/testing-library/jest-dom) matchers are registered in [projects/ui/src/test-setup.ts](projects/ui/src/test-setup.ts).
 - **Coverage** is 100% on branches and lines, 97.27% on statements and 93.33% on functions (the `contentChild` query function in `field` counts as never called); the CI thresholds (statements 85, branches 80, functions 70, lines 85 in [angular.json](angular.json)) are a floor. Stories are excluded from coverage.
-- **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser via the Storybook test-runner. The Vitest addon is not used because it does not support Angular.
+- **Interaction tests** live in the stories themselves (`play` functions) and run in a real browser through the Storybook Vitest addon, against the stories sources (no built Storybook needed).
 
 ## Quality and conventions
 

@@ -9,7 +9,7 @@ const { name } = JSON.parse(readFileSync(new URL('../projects/ui/package.json', 
 
 const config: StorybookConfig = {
   stories: ['../projects/ui/docs/**/*.mdx', '../projects/ui/**/*.stories.ts'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-themes'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-themes', '@storybook/addon-vitest'],
   framework: {
     name: '@storybook/angular-vite',
     options: { compodoc: false },
