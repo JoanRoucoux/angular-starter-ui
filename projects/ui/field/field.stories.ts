@@ -32,7 +32,7 @@ const meta: Meta<FieldArgs> = {
 #### Accessibility
 
 * The label is bound to the control through \`for\` and \`id\`; the hint and the error are bound through \`aria-describedby\`.
-* An error sets \`aria-invalid\` on the control and is announced through \`role="alert"\`.
+* An error sets \`aria-invalid\` on the control and is announced once, through a polite live region, when the control is touched or when \`error\` changes, and not again while the user types.
 * \`labelHidden\` keeps the label for assistive technologies and hides it visually.
 * A control with the native \`required\` attribute gets a visible marker after the label (\`requiredText\`). The marker is hidden from assistive technologies, which already read \`required\` from the control.`,
       },

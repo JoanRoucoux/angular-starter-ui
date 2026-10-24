@@ -41,7 +41,7 @@ describe('UiField', () => {
     });
 
     const input = screen.getByRole('textbox', { name: 'Email' });
-    expect(screen.getByRole('alert')).toHaveTextContent('Enter an email');
+    expect(screen.getByText('Enter an email', { selector: 'p' })).toBeInTheDocument();
     expect(input).toBeInvalid();
     expect(input).toHaveAccessibleDescription('Enter an email');
   });
@@ -56,7 +56,7 @@ describe('UiField', () => {
     await fixture.whenStable();
 
     expect(screen.getByRole('textbox', { name: 'Email' })).toBeValid();
-    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByText('Enter an email', { selector: 'p' })).not.toBeInTheDocument();
   });
 
   it('shows the first message of the control errors once touched', async () => {
@@ -65,7 +65,7 @@ describe('UiField', () => {
       componentProperties: { errors: [{}, { message: 'Enter a valid email' }], touched: true },
     });
 
-    expect(screen.getByRole('alert')).toHaveTextContent('Enter a valid email');
+    expect(screen.getByText('Enter a valid email', { selector: 'p' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Email' })).toBeInvalid();
   });
 
@@ -75,7 +75,7 @@ describe('UiField', () => {
       componentProperties: { errors: [{ message: 'Enter a valid email' }], touched: false },
     });
 
-    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByText('Enter a valid email', { selector: 'p' })).not.toBeInTheDocument();
   });
 
   it('prefers the explicit error over the control errors', async () => {
@@ -87,7 +87,7 @@ describe('UiField', () => {
       },
     );
 
-    expect(screen.getByRole('alert')).toHaveTextContent('Already taken');
+    expect(screen.getByText('Already taken', { selector: 'p' })).toBeInTheDocument();
   });
 
   it('wraps a textarea', async () => {
@@ -179,6 +179,139 @@ describe('UiField', () => {
     await rerender({ componentProperties: { required: false } });
     await fixture.whenStable();
     await vi.waitFor(() => expect(screen.queryByText('(required)')).not.toBeInTheDocument());
+  });
+
+  describe('announcements', () => {
+    type Props = { error?: string; errors: { message?: string }[]; touched: boolean };
+    const template =
+      '<ui-field label="Email" [error]="error"><input uiInput [errors]="errors" [touched]="touched" /></ui-field>';
+    const live = (container: Element): HTMLElement => container.querySelector<HTMLElement>('[aria-live="polite"]')!;
+
+    it('does not give the error paragraph an alert role', async () => {
+      await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: 'Enter an email', errors: [], touched: false },
+      });
+
+      expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    });
+
+    it('announces an explicit error', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: undefined, errors: [], touched: false },
+      });
+
+      expect(live(container).textContent?.trim()).toBe('');
+
+      await rerender({ componentProperties: { error: 'Already taken', errors: [], touched: false } });
+      await fixture.whenStable();
+
+      expect(live(container)).toHaveTextContent('Already taken');
+    });
+
+    it('announces a changed explicit error', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: 'Already taken', errors: [], touched: false },
+      });
+
+      await rerender({ componentProperties: { error: 'Too short', errors: [], touched: false } });
+      await fixture.whenStable();
+
+      expect(live(container)).toHaveTextContent('Too short');
+    });
+
+    it('announces a control error when the control turns touched', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: undefined, errors: [{ message: 'Enter a valid email' }], touched: false },
+      });
+
+      expect(live(container).textContent?.trim()).toBe('');
+
+      await rerender({
+        componentProperties: { error: undefined, errors: [{ message: 'Enter a valid email' }], touched: true },
+      });
+      await fixture.whenStable();
+
+      expect(live(container)).toHaveTextContent('Enter a valid email');
+    });
+
+    it('announces nothing when the control turns touched without a message', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: undefined, errors: [], touched: false },
+      });
+
+      await rerender({ componentProperties: { error: undefined, errors: [], touched: true } });
+      await fixture.whenStable();
+
+      expect(live(container).textContent?.trim()).toBe('');
+    });
+
+    it('announces nothing while typing toggles the message on a touched control', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: undefined, errors: [], touched: true },
+      });
+
+      await rerender({
+        componentProperties: { error: undefined, errors: [{ message: 'Enter a valid email' }], touched: true },
+      });
+      await fixture.whenStable();
+
+      expect(screen.getByText('Enter a valid email', { selector: 'p' })).toBeInTheDocument();
+      expect(live(container).textContent?.trim()).toBe('');
+
+      await rerender({ componentProperties: { error: undefined, errors: [], touched: true } });
+      await fixture.whenStable();
+      await rerender({ componentProperties: { error: undefined, errors: [{ message: 'Too short' }], touched: true } });
+      await fixture.whenStable();
+
+      expect(live(container).textContent?.trim()).toBe('');
+    });
+
+    it('does not announce a control error that changes while the control stays touched', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: undefined, errors: [{ message: 'Enter a valid email' }], touched: false },
+      });
+
+      await rerender({
+        componentProperties: { error: undefined, errors: [{ message: 'Enter a valid email' }], touched: true },
+      });
+      await fixture.whenStable();
+      await rerender({ componentProperties: { error: undefined, errors: [{ message: 'Too short' }], touched: true } });
+      await fixture.whenStable();
+
+      expect(live(container).textContent?.trim()).toBe('');
+      expect(screen.getByRole('textbox', { name: 'Email' })).toHaveAccessibleDescription('Too short');
+    });
+
+    it('keeps an announced explicit error when the control turns touched', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: 'Already taken', errors: [], touched: false },
+      });
+
+      await rerender({ componentProperties: { error: 'Already taken', errors: [], touched: true } });
+      await fixture.whenStable();
+
+      expect(live(container)).toHaveTextContent('Already taken');
+    });
+
+    it('clears the announcement when the message disappears', async () => {
+      const { container, rerender, fixture } = await render<Props>(template, {
+        imports: [UiField, UiInput],
+        componentProperties: { error: 'Already taken', errors: [], touched: false },
+      });
+
+      await rerender({ componentProperties: { error: undefined, errors: [], touched: false } });
+      await fixture.whenStable();
+
+      expect(live(container).textContent?.trim()).toBe('');
+    });
   });
 
   it('renders without a control', async () => {
