@@ -3,7 +3,7 @@ import { Directive, forwardRef, input } from '@angular/core';
 import { UI_CONTROL, type UiControl, type UiControlError } from 'angular-starter-ui/control';
 
 const CONTROL_CLASSES =
-  'w-full rounded-md border border-(--border) bg-transparent px-3 text-sm text-(--foreground) transition-colors placeholder:text-(--muted-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) aria-invalid:border-(--destructive) disabled:cursor-not-allowed disabled:opacity-50';
+  'w-full rounded-md border border-(--input) bg-transparent px-3 text-sm text-(--foreground) transition-colors placeholder:text-(--muted-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) aria-invalid:border-(--destructive) disabled:cursor-not-allowed disabled:opacity-50';
 
 @Directive({
   selector: 'input[uiInput]',

@@ -29,7 +29,8 @@ const meta: Meta<InputArgs> = {
 #### Accessibility
 
 * Every input needs an accessible name: wrap it in a \`ui-field\`, or set \`aria-label\`.
-* \`aria-invalid="true"\` turns the border to the destructive token; \`ui-field\` sets it for you when it shows an error.`,
+* An invalid input must come with a text message, since color alone is not enough. Use \`ui-field\`, which shows the message, links it with \`aria-describedby\` and sets \`aria-invalid\` for you.
+* \`aria-invalid="true"\` turns the border to the destructive token.`,
       },
     },
   },
@@ -70,9 +71,17 @@ export const Textarea: Story = {
 };
 
 export const Invalid: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The red border never stands alone: the message below is linked with aria-describedby. In an application, wrap the input in a ui-field, which does all of this from its error input.',
+      },
+    },
+  },
   render: (args) => ({
     props: args,
-    template: `<input uiInput [type]="type" [placeholder]="placeholder" [disabled]="disabled" aria-label="Example" aria-invalid="true" />`,
+    template: `<input uiInput [type]="type" [placeholder]="placeholder" [disabled]="disabled" aria-label="Example" aria-invalid="true" aria-describedby="example-error" /><p id="example-error" class="mt-1.5 text-xs font-medium text-(--destructive)">Enter a valid email</p>`,
   }),
 };
 

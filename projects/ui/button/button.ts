@@ -7,12 +7,12 @@ export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const;
 export type ButtonSize = (typeof BUTTON_SIZES)[number];
 
 const BASE_CLASSES =
-  'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:pointer-events-none disabled:opacity-50';
+  'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md border border-transparent font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--primary) disabled:pointer-events-none disabled:opacity-50';
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: 'bg-(--primary) text-(--primary-foreground) hover:bg-(--primary)/90',
   secondary: 'bg-(--secondary) text-(--secondary-foreground) hover:bg-(--secondary)/80',
-  destructive: 'bg-(--destructive) text-(--destructive-foreground) hover:bg-(--destructive)/90',
+  destructive: 'bg-(--destructive) text-(--destructive-foreground) hover:bg-(--destructive)/95',
   ghost: 'hover:bg-(--accent) hover:text-(--accent-foreground)',
 };
 

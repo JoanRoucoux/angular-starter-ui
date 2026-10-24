@@ -9,6 +9,7 @@ type FieldArgs = {
   labelHidden: boolean;
   hint: string;
   error: string;
+  requiredText: string;
 };
 
 const meta: Meta<FieldArgs> = {
@@ -32,20 +33,22 @@ const meta: Meta<FieldArgs> = {
 
 * The label is bound to the control through \`for\` and \`id\`; the hint and the error are bound through \`aria-describedby\`.
 * An error sets \`aria-invalid\` on the control and is announced through \`role="alert"\`.
-* \`labelHidden\` keeps the label for assistive technologies and hides it visually.`,
+* \`labelHidden\` keeps the label for assistive technologies and hides it visually.
+* A control with the native \`required\` attribute gets a visible marker after the label (\`requiredText\`). The marker is hidden from assistive technologies, which already read \`required\` from the control.`,
       },
     },
   },
   decorators: [moduleMetadata({ imports: [UiField, UiInput, UiTextarea] })],
   render: (args) => ({
     props: args,
-    template: `<ui-field [label]="label" [labelHidden]="labelHidden" [hint]="hint" [error]="error"><input uiInput type="email" /></ui-field>`,
+    template: `<ui-field [label]="label" [labelHidden]="labelHidden" [hint]="hint" [error]="error" [requiredText]="requiredText"><input uiInput type="email" /></ui-field>`,
   }),
   args: {
     label: 'Email',
     labelHidden: false,
     hint: '',
     error: '',
+    requiredText: '(required)',
   },
   argTypes: {
     label: { control: 'text', description: 'Visible label, bound to the projected control.' },
@@ -57,6 +60,10 @@ const meta: Meta<FieldArgs> = {
     error: {
       control: 'text',
       description: 'Error message. It wins over the control errors and marks the control invalid.',
+    },
+    requiredText: {
+      control: 'text',
+      description: 'Visible marker shown after the label when the projected control has the native required attribute.',
     },
   },
 };
@@ -72,6 +79,13 @@ export const WithHint: Story = {
 
 export const WithError: Story = {
   args: { error: 'Enter a valid email' },
+};
+
+export const Required: Story = {
+  render: (args) => ({
+    props: args,
+    template: `<ui-field [label]="label" [hint]="hint" [requiredText]="requiredText"><input uiInput type="email" required /></ui-field>`,
+  }),
 };
 
 export const LabelHidden: Story = {

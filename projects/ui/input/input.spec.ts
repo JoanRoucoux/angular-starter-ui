@@ -9,7 +9,7 @@ describe('UiInput', () => {
     await render('<input uiInput aria-label="Email" />', { imports: [UiInput] });
 
     const input = screen.getByRole('textbox', { name: 'Email' });
-    expect(input).toHaveClass('border-(--border)');
+    expect(input).toHaveClass('border-(--input)');
 
     await user.type(input, 'jane@example.com');
     expect(input).toHaveValue('jane@example.com');
@@ -39,7 +39,7 @@ describe('UiInput', () => {
     await render('<textarea uiTextarea aria-label="Notes"></textarea>', { imports: [UiTextarea] });
 
     const textarea = screen.getByRole('textbox', { name: 'Notes' });
-    expect(textarea).toHaveClass('border-(--border)', 'min-h-24');
+    expect(textarea).toHaveClass('border-(--input)', 'min-h-24');
 
     await user.type(textarea, 'hello');
     expect(textarea).toHaveValue('hello');

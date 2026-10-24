@@ -5,6 +5,7 @@
   --card: light-dark(hsl(0 0% 100%), hsl(240 10% 5.5%));
   --card-foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 98%));
   --border: light-dark(hsl(240 5.9% 90%), hsl(240 3.7% 15.9%));
+  --input: light-dark(hsl(240 5% 56%), hsl(240 5% 40%));
   --primary: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
   --primary-foreground: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
   --secondary: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));

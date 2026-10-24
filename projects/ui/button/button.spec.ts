@@ -12,7 +12,12 @@ describe('UiButton', () => {
   it('applies the primary variant and medium size by default', async () => {
     await render('<button ui-button>Save</button>', { imports: [UiButton] });
 
-    expect(screen.getByRole('button', { name: 'Save' })).toHaveClass('bg-(--primary)', 'h-9');
+    expect(screen.getByRole('button', { name: 'Save' })).toHaveClass(
+      'bg-(--primary)',
+      'h-9',
+      'border',
+      'border-transparent',
+    );
   });
 
   it.each<[ButtonVariant, string]>([
