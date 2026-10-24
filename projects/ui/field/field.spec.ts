@@ -144,6 +144,43 @@ describe('UiField', () => {
     expect(screen.getByRole('textbox', { name: 'Code' })).not.toHaveAttribute('aria-describedby');
   });
 
+  it('shows a visible required marker for a required control', async () => {
+    await render('<ui-field label="Email"><input uiInput required /></ui-field>', { imports: [UiField, UiInput] });
+
+    const marker = screen.getByText('(required)');
+    expect(marker).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByRole('textbox', { name: 'Email' })).toBeRequired();
+  });
+
+  it('shows no marker for an optional control', async () => {
+    await render('<ui-field label="Email"><input uiInput /></ui-field>', { imports: [UiField, UiInput] });
+
+    expect(screen.queryByText('(required)')).not.toBeInTheDocument();
+  });
+
+  it('uses a custom required text', async () => {
+    await render('<ui-field label="Email" requiredText="*"><input uiInput required /></ui-field>', {
+      imports: [UiField, UiInput],
+    });
+
+    expect(screen.getByText('*')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('follows the required attribute when the app changes it', async () => {
+    const { rerender, fixture } = await render(
+      '<ui-field label="Email"><input uiInput [required]="required" /></ui-field>',
+      { imports: [UiField, UiInput], componentProperties: { required: false } },
+    );
+
+    await rerender({ componentProperties: { required: true } });
+    await fixture.whenStable();
+    await vi.waitFor(() => expect(screen.getByText('(required)')).toBeInTheDocument());
+
+    await rerender({ componentProperties: { required: false } });
+    await fixture.whenStable();
+    await vi.waitFor(() => expect(screen.queryByText('(required)')).not.toBeInTheDocument());
+  });
+
   it('renders without a control', async () => {
     await render('<ui-field label="Empty" />', { imports: [UiField] });
 

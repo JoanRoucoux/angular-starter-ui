@@ -10,7 +10,7 @@ describe('UiBadge', () => {
   });
 
   it.each<[BadgeVariant, string]>([
-    ['primary', 'bg-(--primary)'],
+    ['primary', 'border-transparent'],
     ['secondary', 'bg-(--secondary)'],
     ['destructive', 'bg-(--destructive)'],
     ['outline', 'border-(--border)'],

@@ -31,7 +31,8 @@ const meta: Meta<ButtonArgs> = {
 
 #### Accessibility
 
-* The host stays a native \`<button>\` or \`<a>\`, so focus, activation with Enter or Space and the disabled state come from the platform.
+* A \`<button>\` gets focus, activation with Enter or Space and the disabled state from the platform.
+* An \`<a ui-button>\` activates with Enter only, is focusable only with an \`href\`, and has no disabled state: remove the \`href\` to disable it, and do not style it as disabled.
 * A button needs a visible text or an \`aria-label\`.`,
       },
     },

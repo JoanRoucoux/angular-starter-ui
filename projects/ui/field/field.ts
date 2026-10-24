@@ -1,5 +1,6 @@
 import {
   Component,
+  DestroyRef,
   ElementRef,
   afterRenderEffect,
   booleanAttribute,
@@ -7,6 +8,7 @@ import {
   contentChild,
   inject,
   input,
+  signal,
 } from '@angular/core';
 
 import { UI_CONTROL } from 'angular-starter-ui/control';
@@ -22,7 +24,12 @@ const nextId = (() => {
   template: `
     <div class="flex flex-col gap-1.5">
       <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
-      <label [class]="labelClasses()">{{ label() }}</label>
+      <label [class]="labelClasses()"
+        >{{ label() }}
+        @if (required()) {
+          <span aria-hidden="true" class="font-normal text-(--muted-foreground)">{{ requiredText() }}</span>
+        }
+      </label>
 
       <ng-content />
 
@@ -41,11 +48,14 @@ export class UiField {
   readonly labelHidden = input(false, { transform: booleanAttribute });
   readonly hint = input<string>();
   readonly error = input<string>();
+  readonly requiredText = input('(required)');
 
   readonly #id = nextId();
   protected readonly hintId = `${this.#id}-hint`;
   protected readonly errorId = `${this.#id}-error`;
   readonly #host = inject<ElementRef<HTMLElement>>(ElementRef);
+  readonly #destroyRef = inject(DestroyRef);
+  protected readonly required = signal(false);
   protected readonly control = contentChild(UI_CONTROL);
 
   protected readonly labelClasses = computed(() =>
@@ -71,12 +81,22 @@ export class UiField {
   constructor() {
     let markedByField = false;
     let ownDescribedBy: string | null | undefined;
+    let observed: HTMLElement | undefined;
 
     afterRenderEffect(() => {
       const control = this.#host.nativeElement.querySelector<HTMLElement>('input, textarea');
 
       if (!control) {
         return;
+      }
+
+      if (observed !== control) {
+        observed = control;
+        const sync = (): void => this.required.set(control.hasAttribute('required'));
+        const observer = new MutationObserver(sync);
+        observer.observe(control, { attributes: true, attributeFilter: ['required'] });
+        this.#destroyRef.onDestroy(() => observer.disconnect());
+        sync();
       }
 
       control.id ||= this.#id;
