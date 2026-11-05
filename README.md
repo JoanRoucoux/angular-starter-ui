@@ -43,7 +43,7 @@ Create an application from any of them with [starter-generator](https://github.c
 Generate a design system from this starter:
 
 ```bash
-starter-generator portfolio-ui --starter ui
+starter-generator portfolio-ui --starter angular-ui
 ```
 
 Then run it. Prerequisites: Node (supported versions in `engines` of [package.json](package.json)) and pnpm.
