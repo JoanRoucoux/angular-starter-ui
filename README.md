@@ -18,6 +18,7 @@ It is the design system counterpart of [angular-starter-web](https://github.com/
 | ---------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | [angular-starter-web](https://github.com/JoanRoucoux/angular-starter-web)          | An Angular web application connected to a backend         |
 | [angular-starter-ui](https://github.com/JoanRoucoux/angular-starter-ui) (this one) | An Angular design system: component library and Storybook |
+| [react-starter-web](https://github.com/JoanRoucoux/react-starter-web)              | A React web application connected to a backend            |
 | [java-starter](https://github.com/JoanRoucoux/java-starter)                        | A Spring Boot backend in hexagonal architecture           |
 
 Create an application from any of them with [starter-generator](https://github.com/JoanRoucoux/starter-generator).
@@ -43,7 +44,7 @@ Create an application from any of them with [starter-generator](https://github.c
 Generate a design system from this starter:
 
 ```bash
-starter-generator portfolio-ui --starter ui
+starter-generator portfolio-ui --starter angular-ui
 ```
 
 Then run it. Prerequisites: Node (supported versions in `engines` of [package.json](package.json)) and pnpm.
